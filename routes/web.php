@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',['as'=>'index','uses'=>'App\Http\Controllers\LoginController@home']);
+//Route::get('/login/deletaexercicio/{id}',['as'=>'admin.login.deletaexercicio','uses'=>'App\Http\Controllers\Site\LoginController@deletaexercicio']);
