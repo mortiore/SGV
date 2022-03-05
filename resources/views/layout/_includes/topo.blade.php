@@ -22,12 +22,22 @@ use Illuminate\Support\Facades\Auth;
 
 </head>
 
-<body style="background-color: #3b4f66;
-background-color: linear-gradient(90deg, teal 0%, #3b4f66 100%);">
+<body style="background-color: #3b4f66;">
 
 <style>
     *{
         font-family: sans-serif;
+    }
+    .botaop{
+        background-color: #3b4f66 !important;
+    }
+
+    .botaop:hover{
+        background-color: #314153 !important;
+    }
+
+    .botaop:focus{
+        background-color: #c29a5c !important;
     }
 
 </style>
@@ -35,8 +45,26 @@ background-color: linear-gradient(90deg, teal 0%, #3b4f66 100%);">
 <header>
     <nav>
         <div style="background-color: #3b4f66; background-color: #314153; border-bottom: 2px solid; border-color:black;" class="nav-wrapper">
-            <a href="#!" style="color: #c29a5c; text-decoration: none !important;" class="brand-logo center"> Selaria GV</a>
+
+            <a
+            <?php if(Auth::check()) { ?>
+            href="{{route('admin.dashboard')}}"
+            <?php } else { ?>
+            href="{{route('index')}}"
+            <?php } ?>
+
+            style="color: #c29a5c; text-decoration: none !important;" class="brand-logo center">Selaria GV</a>
+
+
+           <?php if(Auth::check()) { ?>
+        <ul style="color: black; text-decoration: none !important;" class="right">
+        <li><a class="btn" style="background-color: #c29a5c; color: antiquewhite ; text-decoration: none !important;"href="{{route('sair')}}">Sair</a></li>
+        </ul>
+          <?php } else {} ?>
+
         </div>
+
     </nav>
+
 </header>
 <div style="padding-bottom: 30px;"></div>

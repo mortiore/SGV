@@ -1,62 +1,70 @@
 @extends ('layout.site')
 
-@section('titulo','Sistema Interno GV')
+@section('titulo','Área de Login')
 
 @section('conteudo')
+<style>
+    input{
+        color: antiquewhite;
+    }
+    input:focus {
+    border: none !important;
+    border-bottom: 2px solid #c29a5c !important;
+    }
 
+    input:hover {
+    border: none !important;
+    border-bottom: 2px solid #c29a5c !important;
+    }
+
+</style>
 <div style="max-width: unset !important; background-color: #314153 ; padding-bottom: 20px;" class="container">
 
-    <div style="width: 400px; padding-top: 30px;" class="container">
+    <div style="padding-bottom: 30px; width: 400px; padding-top: 30px;" class="container">
 
     <div style="box-shadow: 8px 5px 5px rgba(0, 0, 0, .3);" class="center">
-        <img  style="width: 370px; height: 225px; object-fit: cover; object-position: 0px -40px;" src="{{ asset('/img/Selaria.png') }}"/>
+        <img  style="width: 370px; height: 225px; object-fit: cover; object-position: 0px -50px;" src="{{ asset('/img/Selaria.png') }}"/>
         <!--  -->
     </div>
 
     </div>
 
-    <div style="padding-bottom: 50px;"></div>
-
 </div>
 
-<div style="padding-top: 50px; padding-bottom: 30px;">
-    <h1 style="text-align: center; color: #c29a5c; ">Soluções Inteligentes</h1>
-</div>
-
-<div>
 <div style="padding-bottom: 20px;" class="center">
 
-<div style="padding-top: 40px; padding-bottom: 30px; background-color: #314153;">
-<div class="container">
-<div class="row">
-  <div class="col-sm-3">
-  <img class="card-img-top" style="width: 50%" src="{{ asset('/img/usuario.jpg') }}" alt="">
-      <div class="card-body">
-        <a href="#" class="btn btn-secondary">Cadastrar Cliente</a>
-      </div>
-  </div>
-  <div class="col-sm-3">
-  <img class="card-img-top" style="width: 50%" src="{{ asset('/img/usuario.jpg') }}" alt="">
-      <div class="card-body">
-        <a href="#" class="btn btn-secondary">Cadastrar Produto</a>
-      </div>
-  </div>
-  <div class="col-sm-3">
-  <img class="card-img-top" style="width: 50%" src="{{ asset('/img/usuario.jpg') }}" alt="">
-      <div class="card-body">
-        <a href="#" class="btn btn-secondary">Cadastrar Fornecedor</a>
-      </div>
-  </div>
-  <div class="col-sm-3">
-  <img class="card-img-top" style="width: 50%" src="{{ asset('/img/usuario.jpg') }}" alt="">
-      <div class="card-body">
-        <a href="#" class="btn btn-secondary">Visualizar Cadastros</a>
-      </div>
-  </div>
-</div>
-</div>
-</div>
+<div style="width: 400px;" class="container">
+        <h1 style="padding-top: 20px;padding-bottom: 20px; color: #c29a5c;" class="center">Portal Interno</h1>
 
+        <div style="max-width: unset !important; background-color: #314153 ; padding-bottom: 20px; border-radius: 2.5%;" class="container">
+
+            <div class="container" style="padding-top: 40px;">
+
+                <form action="{{route('entrar')}}" method="put">
+
+                {{ csrf_field() }}
+
+                <div class="input-field">
+                    <label style="color: #c29a5c;">Login</label>
+                    <input type="text" name="email" required>
+                </div>
+
+                <div class="input-field">
+                    <label style="color: #c29a5c;">Senha</label>
+                    <input type="password" name="password" required>
+                </div>
+
+                <div style="padding-top: 30px; padding-bottom: 20px;" class="center">
+
+                <button style="height: 60px; color: #c29a5c;" class="btn btn-secondary botaop">Entrar <br><i class="material-icons">login</i></button>
+
+                </div>
+
+                </form>
+
+            </div>
+        </div>
+</div>
 
 
 </div>
