@@ -40,6 +40,35 @@ use Illuminate\Support\Facades\Auth;
         background-color: #c29a5c !important;
     }
 
+    .bu{
+    background-color: #1fc600;
+}
+.bu:hover{
+    background-color: #089000;
+    color: antiquewhite;
+}
+.bu1{
+    background-color: #FF0000;
+}
+.bu1:hover{
+    background-color: #BF0000;
+    color: antiquewhite;
+}
+.bu2{
+    background-color: #c29a5c;
+}
+.bu2:hover{
+    background-color: rgba(194, 154, 92, .7);
+}
+.bu2:focus{
+    background-color: rgba(194, 154, 92, .7);
+}
+th{
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+
 </style>
 
 <header>

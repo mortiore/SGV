@@ -19,4 +19,33 @@ class FornecedorController extends Controller
         return view('admin.fornecedor.homefornecedor',compact('registros'));
 
     }
+
+    public function cadastrafornecedor()
+    {
+        return view('admin.fornecedor.cadastrafornecedor');
+    }
+
+    public function updatefornecedor(Request $req)
+    {
+        $dados = $req->all();
+
+        function createfornecedor(array $dados){
+
+            $criar = Fornecedor::create([
+                'nome' => $dados['nome'],
+                'telefone' => $dados['telefone'],
+                'email' => $dados['email'],
+                'bairro' => $dados['bairro'],
+                'rua' => $dados['rua'],
+                'numCasa' => $dados['numCasa']
+            ]);
+
+            return $criar;
+
+        }
+
+        createfornecedor($dados);
+
+        return redirect()->route('admin.fornecedor.homefornecedor');
+    }
 }

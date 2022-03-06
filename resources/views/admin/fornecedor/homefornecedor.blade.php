@@ -3,41 +3,13 @@
 @section('titulo','Fornecedores Cadastrados')
 
 @section('conteudo')
-<style>
 
-.bu{
-    background-color: #1fc600;
-}
-.bu:hover{
-    background-color: #089000;
-    color: antiquewhite;
-}
-.bu1{
-    background-color: #FF0000;
-}
-.bu1:hover{
-    background-color: #BF0000;
-    color: antiquewhite;
-}
-.bu2{
-    background-color: #c29a5c;
-}
-.bu2:hover{
-    background-color: rgba(194, 154, 92, .7);
-}
-th{
-        background: #333;
-        color: white;
-        font-weight: bold;
-    }
-
-</style>
 <div style="background-color: #314153; padding: 0px 120px 0px 120px;">
 
     <h1 style="padding-top: 20px; padding-bottom: 40px; color: #c29a5c;" class="center">Fornecedores</h1>
     <div class="">
         <div class="center" style="padding-bottom: 30px;">
-        <button class="btn bu2"><span><a style="color: black; text-decoration: none;" href="*">Cadastrar Fornecedor</a></span></button>
+        <button class="btn bu2"><span><a style="color: black; text-decoration: none;" href="{{route('admin.fornecedor.cadastrafornecedor')}}">Cadastrar Fornecedor</a></span></button>
         </div>
         <table class="table table-bordered" style="background-color: white; border:3px solid #c29a5c !important; border-color: #c29a5c !important;">
         <thead>
