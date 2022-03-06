@@ -32,7 +32,7 @@
                     <td>{{ $registro->numEstoque }}</td>
                     <td>
                         <a class="btn bu" href="{{ route('admin.produto.editaproduto',$registro->idProduto) }}">Editar</a>
-                        <a class="btn bu1" href="{{ route('admin.produto.deletaproduto',$registro->idProduto) }}">Deletar</a>
+                        <a class="btn bu1" onclick="return confirm('Você realmente quer excluir {{ $registro->nome }} ?')" href="{{ route('admin.produto.deletaproduto',$registro->idProduto) }}">Deletar</a>
                     </td>
                 </tr>
                 @endforeach

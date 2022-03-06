@@ -54,15 +54,34 @@ use Illuminate\Support\Facades\Auth;
     background-color: #BF0000;
     color: antiquewhite;
 }
+.bu1:focus{
+    background-color: #BF0000;
+    color: antiquewhite;
+}
 .bu2{
     background-color: #c29a5c;
 }
 .bu2:hover{
-    background-color: rgba(194, 154, 92, .7);
+    background-color: rgba(194, 154, 92, .8);
 }
 .bu2:focus{
-    background-color: rgba(194, 154, 92, .7);
+    background-color: rgba(194, 154, 92, .8);
 }
+
+.titulo1{
+    width: 60%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+    #nome{
+        color: #333;
+    }
+    #linhas{
+    border-bottom: 1px solid #333;
+    }
 th{
         background: #333;
         color: white;

@@ -36,7 +36,7 @@
                         <td>{{ $registro->bairro }}</td>
                         <td>
                             <a class="btn bu" href="{{ route('admin.fornecedor.editafornecedor',$registro->idFornecedor) }}">Editar</a>
-                            <a class="btn bu1" href="{{ route('admin.fornecedor.deletafornecedor',$registro->idFornecedor) }}">Deletar</a>
+                            <a class="btn bu1" onclick="return confirm('Você realmente quer excluir {{ $registro->nome }} ?')" href="{{ route('admin.fornecedor.deletafornecedor',$registro->idFornecedor) }}">Deletar</a>
                         </td>
                     </tr>
                     @endforeach
