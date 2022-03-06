@@ -35,8 +35,8 @@
                         <td>{{ $registro->numCasa }}</td>
                         <td>{{ $registro->bairro }}</td>
                         <td>
-                            <a class="btn bu" href="*">Editar</a>
-                            <a class="btn bu1" href="*">Deletar</a>
+                            <a class="btn bu" href="{{ route('admin.fornecedor.editafornecedor',$registro->idFornecedor) }}">Editar</a>
+                            <a class="btn bu1" href="{{ route('admin.fornecedor.deletafornecedor',$registro->idFornecedor) }}">Deletar</a>
                         </td>
                     </tr>
                     @endforeach

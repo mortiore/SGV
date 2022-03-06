@@ -31,8 +31,8 @@
                     <td>R$ {{ $registro->valor }}</td>
                     <td>{{ $registro->numEstoque }}</td>
                     <td>
-                        <a class="btn bu" href="*">Editar</a>
-                        <a class="btn bu1" href="*">Deletar</a>
+                        <a class="btn bu" href="{{ route('admin.produto.editaproduto',$registro->idProduto) }}">Editar</a>
+                        <a class="btn bu1" href="{{ route('admin.produto.deletaproduto',$registro->idProduto) }}">Deletar</a>
                     </td>
                 </tr>
                 @endforeach

@@ -49,4 +49,25 @@ class ClienteController extends Controller
 
         return redirect()->route('admin.cliente.homecliente');
     }
+
+    public function editacliente($id)
+    {
+        $registro = Cliente::find($id);
+        return view('admin.cliente.editacliente',compact('registro'));
+    }
+
+    public function atualizacliente(Request $req, $id)
+    {
+        $dados = $req->all();
+
+        Cliente::find($id)->update($dados);
+
+        return redirect()->route('admin.cliente.homecliente');
+    }
+
+    public function deletacliente($id)
+    {
+        Cliente::find($id)->delete();
+        return redirect()->route('admin.cliente.homecliente');
+    }
 }
