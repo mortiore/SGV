@@ -88,6 +88,19 @@ th{
         font-weight: bold;
     }
 
+    input{
+        color: antiquewhite;
+    }
+    input:focus {
+    border: none !important;
+    border-bottom: 2px solid #c29a5c !important;
+    }
+
+    input:hover {
+    border: none !important;
+    border-bottom: 2px solid #c29a5c !important;
+    }
+
 </style>
 
 <header>
@@ -106,7 +119,7 @@ th{
 
            <?php if(Auth::check()) { ?>
         <ul style="color: black; text-decoration: none !important;" class="right">
-        <li><a class="btn" style="background-color: #c29a5c; color: antiquewhite ; text-decoration: none !important;"href="{{route('sair')}}">Sair</a></li>
+        <li><a class="btn" style="background-color: #c29a5c; color: antiquewhite; text-decoration: none !important;"href="{{route('sair')}}">Sair</a></li>
         </ul>
           <?php } else {} ?>
 

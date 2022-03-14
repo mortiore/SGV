@@ -35,21 +35,27 @@
 <div class="container">
 <div class="row">
   <div class="col-sm-4">
+      <div style="border-radius: 5px; background-color: #c29a5c; border: 3px solid #3b4f66">
   <img class="card-img-top img" src="{{ asset('/img/fornecedor1.png') }}" alt="">
       <div class="card-body">
         <a href="{{route('admin.cliente.homecliente')}}" class="btn btn-secondary botaop">Clientes</a>
       </div>
+      </div>
   </div>
   <div class="col-sm-4">
+  <div style="border-radius: 5px; background-color: #c29a5c; border: 3px solid #3b4f66">
   <img class="card-img-top img" src="{{ asset('/img/produto.png') }}" alt="">
       <div class="card-body">
         <a href="{{route('admin.produto.homeproduto')}}" class="btn btn-secondary botaop">Produtos</a>
       </div>
+      </div>
   </div>
   <div class="col-sm-4">
+  <div style="border-radius: 5px; background-color: #c29a5c; border: 3px solid #3b4f66">
   <img class="card-img-top img" src="{{ asset('/img/fornecedor.png') }}" alt="">
       <div class="card-body">
         <a href="{{route('admin.fornecedor.homefornecedor')}}" class="btn btn-secondary botaop">Fornecedores</a>
+      </div>
       </div>
   </div>
 

@@ -45,6 +45,10 @@ Route::get('/fornecedor/editafornecedor/{id}',['as'=>'admin.fornecedor.editaforn
 Route::put('/fornecedor/atualizafornecedor/{id}',['as'=>'admin.fornecedor.atualizafornecedor','uses'=>'App\Http\Controllers\FornecedorController@atualizafornecedor']);
 Route::get('/fornecedor/deletafornecedor/{id}',['as'=>'admin.fornecedor.deletafornecedor','uses'=>'App\Http\Controllers\FornecedorController@deletafornecedor']);
 
+//Segurança
+Route::get('/entrar/mudasenha/',['as'=>'admin.mudasenha','uses'=>'App\Http\Controllers\LoginController@mudasenha']);
+Route::put('/entrar/atualizasenha/{id}',['as'=>'admin.atualizasenha','uses'=>'App\Http\Controllers\LoginController@atualizasenha']);
+
 
 //Route::get('/login/deletaexercicio/{id}',['as'=>'admin.deletaexercicio','uses'=>'App\Http\Controllers\Site\LoginController@deletaexercicio']);
 
