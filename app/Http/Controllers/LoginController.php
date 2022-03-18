@@ -83,20 +83,36 @@ class LoginController extends Controller
         $dados = $req->all();
         $usuario = User::select('id')->where('id', '=', Auth::user()->id)->first();
 
-        if($usuario->password1 == $dados['password']){
-            echo"<script language='javascript' type='text/javascript'>
-                alert('Cadastre outra senha pois está já foi usada recentemente.');window.location
+        if($dados){
+            $senha          = $dados['password'];
+            $senhaConfirma  = $dados['password2'];
+
+            if($senha != $senhaConfirma) {
+
+                echo"<script language='javascript' type='text/javascript'>
+                alert('As senhas não conferem, tente novamente.');window.location
                 .href='/';</script>";
-        }else{
+            }
 
-        User::find($id)->update([
-        'password' => bcrypt($dados['password'])
-        ]);
+            if($usuario->password1 == $dados['password']){
+                echo"<script language='javascript' type='text/javascript'>
+                    alert('Cadastre outra senha pois está já foi usada recentemente, tente novamente.');window.location
+                    .href='/';</script>";
+            }else{
 
-        $usuario->vencimento = $novavencimento;
-        $usuario->save();
+            if($senha == $senhaConfirma){
+            User::find($id)->update([
+            'password' => bcrypt($dados['password'])
+            ]);
 
-        return redirect()->route('admin.dashboard');
+            $usuario->vencimento = $novavencimento;
+            $usuario->save();
+            echo"<script language='javascript' type='text/javascript'>
+                    alert('Senha alterada com sucesso!');window.location
+                    .href='/';</script>";
+                }
+
+            }
         }
     }
 
