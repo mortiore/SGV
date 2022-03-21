@@ -20,7 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('password1')->nullable();
-            $table->string('password2')->nullable();
+            $table->integer('tentativa')->nullable();
+            $table->dateTime('bloqueio')->nullable();
             $table->dateTime('vencimento')->nullable();
             $table->rememberToken();
             $table->timestamps();

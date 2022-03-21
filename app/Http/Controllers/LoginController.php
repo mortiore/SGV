@@ -49,6 +49,14 @@ class LoginController extends Controller
 
             }
 
+            if($data < $usuario->bloqueio){
+                echo"<script language='javascript' type='text/javascript'>
+                    alert('Sua conta esta ainda esta bloqueada, tente mais tarde.');window.location
+                    .href='/';</script>";
+            }else{
+
+
+
             if($data > $usuario->vencimento){
 
             conferevalidade();
@@ -59,12 +67,44 @@ class LoginController extends Controller
 
             return redirect()->route('admin.dashboard');
 
-            }
+            }}
 
         }else{
+            $dataatual = new DateTime();
+            $data = $dataatual->format('Y-m-d H:i:s');
+
+            $users = DB::table('users')
+            ->select()
+            ->where('email', '=', $dados['email'])
+            ->first();
+
+            if($users != null){
+                $bloqueio = DB::table('users')->increment('tentativa', +1, ['email' => $dados['email']]);
+
+                if($users->tentativa >= 3){
+
+                    date_default_timezone_set('America/Sao_Paulo');
+
+                    $vencimentobloq = new DateTime;
+                    $vencimentobloq->modify('+30 minutes');
+                    $vencimentobloq->format('d-m-Y H:i:s');
+
+                    $user = User::find($users->id);
+                    $user->bloqueio = $vencimentobloq;
+                    $user->tentativa = 0;
+                    $user->save();
+
+                    echo"<script language='javascript' type='text/javascript'>
+                    alert('Sua conta esta bloqueada tente daqui 30 minutos.');window.location
+                    .href='/';</script>";
+                }else{
+                    return $bloqueio;
+                }
+            }else{
             echo"<script language='javascript' type='text/javascript'>
-                alert('Favor digitar email e senha');window.location
+                alert('Este email não possui cadastro.');window.location
                 .href='/';</script>";
+            }
         }
     }
 
