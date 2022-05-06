@@ -51,11 +51,9 @@ class LoginController extends Controller
 
             if($data < $usuario->bloqueio){
                 echo"<script language='javascript' type='text/javascript'>
-                    alert('Sua conta esta ainda esta bloqueada, tente mais tarde.');window.location
+                    alert('Sua conta esta bloqueada, tente mais tarde.');window.location
                     .href='/';</script>";
             }else{
-
-
 
             if($data > $usuario->vencimento){
 
@@ -70,8 +68,6 @@ class LoginController extends Controller
             }}
 
         }else{
-            $dataatual = new DateTime();
-            $data = $dataatual->format('Y-m-d H:i:s');
 
             $users = DB::table('users')
             ->select()
@@ -79,9 +75,10 @@ class LoginController extends Controller
             ->first();
 
             if($users != null){
+                //INCREMENTA O NUMERO DE TENTATIVAS NO BANCO DE DADOS QUANDO É CHAMADA
                 $bloqueio = DB::table('users')->increment('tentativa', +1, ['email' => $dados['email']]);
 
-                if($users->tentativa >= 3){
+                if($users->tentativa >= 3){ //SE JÁ TIVER MAIS DE 3 TENTATIVAS ERRADAS A FUNÇÃO BLOQUEIA A CONTA.
 
                     date_default_timezone_set('America/Sao_Paulo');
 
@@ -98,7 +95,7 @@ class LoginController extends Controller
                     alert('Sua conta esta bloqueada tente daqui 30 minutos.');window.location
                     .href='/';</script>";
                 }else{
-                    return $bloqueio;
+                    return $bloqueio; //+1 TENTATIVA
                 }
             }else{
             echo"<script language='javascript' type='text/javascript'>
@@ -127,25 +124,25 @@ class LoginController extends Controller
             $senha          = $dados['password'];
             $senhaConfirma  = $dados['password2'];
 
-            if($senha != $senhaConfirma) {
+            if($senha != $senhaConfirma) { //CONFERE SE A SENHA E A CONFIRMAÇÃO DA SENHA SÃO DIFERENTES
 
                 echo"<script language='javascript' type='text/javascript'>
                 alert('As senhas não conferem, tente novamente.');window.location
                 .href='/';</script>";
             }
 
-            if($usuario->password1 == $dados['password']){
+            if($usuario->password1 == $dados['password']){ //CONFERE SE A SENHA COLOCADA JÁ TINHA SIDO USADO PELO USUARIO
                 echo"<script language='javascript' type='text/javascript'>
                     alert('Cadastre outra senha pois está já foi usada recentemente, tente novamente.');window.location
                     .href='/';</script>";
             }else{
 
-            if($senha == $senhaConfirma){
+            if($senha == $senhaConfirma){ //SE A SENHA BATER COM A CONFIRMAÇÃO DA SENHA, ELA É CRIPTOGRAFADA E COLOCADA EM BANCO
             User::find($id)->update([
             'password' => bcrypt($dados['password'])
             ]);
 
-            $usuario->vencimento = $novavencimento;
+            $usuario->vencimento = $novavencimento; //COLOCA UM NOVO VENCIMENTO PARA DAQUI 15 DIAS
             $usuario->save();
             echo"<script language='javascript' type='text/javascript'>
                     alert('Senha alterada com sucesso!');window.location

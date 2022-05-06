@@ -3,21 +3,6 @@
 @section('titulo','Área de Login')
 
 @section('conteudo')
-<style>
-    input{
-        color: antiquewhite;
-    }
-    input:focus {
-    border: none !important;
-    border-bottom: 2px solid #c29a5c !important;
-    }
-
-    input:hover {
-    border: none !important;
-    border-bottom: 2px solid #c29a5c !important;
-    }
-
-</style>
 <div style="max-width: unset !important; background-color: #314153 ; padding-bottom: 20px;" class="container">
 
     <div style="padding-bottom: 30px; width: 400px; padding-top: 30px;" class="container">

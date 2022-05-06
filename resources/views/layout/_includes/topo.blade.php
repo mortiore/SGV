@@ -105,7 +105,7 @@ th{
 
 <header>
     <nav>
-        <div style="background-color: #3b4f66; background-color: #314153; border-bottom: 2px solid; border-color:black;" class="nav-wrapper">
+        <div style="background-color: #314153; border-bottom: 2px solid; border-color:black;" class="nav-wrapper">
 
             <a
             <?php if(Auth::check()) { ?>
@@ -121,11 +121,14 @@ th{
         <ul style="color: black; text-decoration: none !important;" class="right">
         <li><a class="btn" style="background-color: #c29a5c; color: antiquewhite; text-decoration: none !important;"href="{{route('sair')}}">Sair</a></li>
         </ul>
-          <?php } else {} ?>
+          <?php } else { ?>
+        <ul style="color: black; text-decoration: none !important;" class="right">
+        <li><a class="btn" style="background-color: #c29a5c; color: antiquewhite; text-decoration: none !important;"href="{{route('entrar')}}">Entrar</a></li>
+        </ul>
+           <?php } ?>
 
         </div>
 
     </nav>
 
 </header>
-<div style="padding-bottom: 30px;"></div>
