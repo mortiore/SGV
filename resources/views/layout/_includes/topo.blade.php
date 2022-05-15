@@ -89,7 +89,7 @@ th{
     }
 
     input{
-        color: antiquewhite;
+
     }
     input:focus {
     border: none !important;

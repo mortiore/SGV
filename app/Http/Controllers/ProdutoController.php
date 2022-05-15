@@ -30,13 +30,24 @@ class ProdutoController extends Controller
     {
         $dados = $req->all();
 
+        if($req->hasFile('imagem')){
+            $imagem = $req->file('imagem');
+            $num = rand(1111,9999);
+            $dir = "img/produto/";
+            $ex = $imagem->guessClientExtension();
+            $nomeImagem = "Imagem_".$num.".".$ex;
+            $imagem->move($dir,$nomeImagem);
+            $dados['imagem'] = $dir."/".$nomeImagem;
+        }
+
         function createproduto(array $dados){
 
             $criar = Produto::create([
                 'nome' => $dados['nome'],
                 'descricao' => $dados['descricao'],
+                'imagem' => $dados['imagem'],
                 'valor' => $dados['valor'],
-                'numEstoque' => $dados['numEstoque']
+                'ativo' => $dados['ativo']
             ]);
 
             return $criar;
@@ -57,6 +68,16 @@ class ProdutoController extends Controller
     public function atualizaproduto(Request $req, $id)
     {
         $dados = $req->all();
+
+        if($req->hasFile('imagem')){
+            $imagem = $req->file('imagem');
+            $num = rand(1111,9999);
+            $dir = "img/produto/";
+            $ex = $imagem->guessClientExtension();
+            $nomeImagem = "Imagem_".$num.".".$ex;
+            $imagem->move($dir,$nomeImagem);
+            $dados['imagem'] = $dir."/".$nomeImagem;
+        }
 
         Produto::find($id)->update($dados);
 

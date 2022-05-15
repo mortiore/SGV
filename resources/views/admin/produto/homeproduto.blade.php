@@ -15,24 +15,24 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Imagem</th>
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Valor</th>
-                    <th>Em estoque</th>
                     <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($registros as $registro)
                 <tr>
-                    <td>{{ $registro->idProduto }}</td>
+                    <td>{{ $registro->id }}</td>
+                    <td><img height="60" src="{{asset($registro->imagem)}}" alt="{{ $registro->titulo }}"></td>
                     <td>{{ $registro->nome }}</td>
                     <td>{{ $registro->descricao }}</td>
                     <td>R$ {{ $registro->valor }}</td>
-                    <td>{{ $registro->numEstoque }}</td>
                     <td>
-                        <a class="btn bu" href="{{ route('admin.produto.editaproduto',$registro->idProduto) }}">Editar</a>
-                        <a class="btn bu1" onclick="return confirm('Você realmente quer excluir {{ $registro->nome }} ?')" href="{{ route('admin.produto.deletaproduto',$registro->idProduto) }}">Deletar</a>
+                        <a class="btn bu" href="{{ route('admin.produto.editaproduto',$registro->id) }}">Editar</a>
+                        <a class="btn bu1" onclick="return confirm('Você realmente quer excluir {{ $registro->nome }} ?')" href="{{ route('admin.produto.deletaproduto',$registro->id) }}">Deletar</a>
                     </td>
                 </tr>
                 @endforeach
