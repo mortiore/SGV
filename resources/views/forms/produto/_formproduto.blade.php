@@ -1,5 +1,5 @@
 <div class="input-field">
-	<input type="text" name="nome" id="nome" value="{{ isset($registro->nome) ? $registro->nome : null }}">
+	<input type="text" name="nome"   value="{{ isset($registro->nome) ? $registro->nome : null }}">
 	<label for="nome">Nome</label>
 </div>
 <div class="input-field">

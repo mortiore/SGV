@@ -17,6 +17,10 @@ Route::get('/',['as'=>'index','uses'=>'App\Http\Controllers\LoginController@home
 Route::get('/entrar',['as'=>'entrar','uses'=>'App\Http\Controllers\LoginController@entrar']);
 Route::get('/entrar/sair',['as'=>'sair','uses'=>'App\Http\Controllers\LoginController@sair']);
 
+//Site
+Route::get('/dash',['as'=>'site.dash','uses'=>'App\Http\Controllers\SiteController@dash']);
+Route::get('/login',['as'=>'site.login','uses'=>'App\Http\Controllers\SiteController@login']);
+
 //Cliente
 Route::get('/cliente/homecliente',['as'=>'admin.cliente.homecliente','uses'=>'App\Http\Controllers\ClienteController@home']);
 Route::get('/cliente/cadastracliente',['as'=>'admin.cliente.cadastracliente','uses'=>'App\Http\Controllers\ClienteController@cadastracliente']);
@@ -25,7 +29,6 @@ Route::post('/cliente/updatecliente',['as'=>'admin.cliente.updatecliente','uses'
 Route::get('/cliente/editacliente/{id}',['as'=>'admin.cliente.editacliente','uses'=>'App\Http\Controllers\ClienteController@editacliente']);
 Route::put('/cliente/atualizacliente/{id}',['as'=>'admin.cliente.atualizacliente','uses'=>'App\Http\Controllers\ClienteController@atualizacliente']);
 Route::get('/cliente/deletacliente/{id}',['as'=>'admin.cliente.deletacliente','uses'=>'App\Http\Controllers\ClienteController@deletacliente']);
-
 
 //Produto
 Route::get('/produto/homeproduto',['as'=>'admin.produto.homeproduto','uses'=>'App\Http\Controllers\ProdutoController@home']);

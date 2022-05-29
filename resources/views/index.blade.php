@@ -41,7 +41,7 @@
 
                 <div style="padding-top: 30px; padding-bottom: 20px;" class="center">
 
-                <button style="height: 60px; color: #c29a5c;" class="btn btn-secondary botaop">Entrar <br><i class="material-icons">login</i></button>
+                <button style="height: 60px; color: #c29a5c;" class="btn btn-secondary">Entrar <br><i class="material-icons">login</i></button>
 
                 </div>
 

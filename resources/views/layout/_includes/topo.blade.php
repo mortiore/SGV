@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Auth;
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap%27">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -27,78 +29,6 @@ use Illuminate\Support\Facades\Auth;
 <style>
     *{
         font-family: sans-serif;
-    }
-    .botaop{
-        background-color: #3b4f66 !important;
-    }
-
-    .botaop:hover{
-        background-color: #314153 !important;
-    }
-
-    .botaop:focus{
-        background-color: #c29a5c !important;
-    }
-
-    .bu{
-    background-color: #1fc600;
-}
-.bu:hover{
-    background-color: #089000;
-    color: antiquewhite;
-}
-.bu1{
-    background-color: #FF0000;
-}
-.bu1:hover{
-    background-color: #BF0000;
-    color: antiquewhite;
-}
-.bu1:focus{
-    background-color: #BF0000;
-    color: antiquewhite;
-}
-.bu2{
-    background-color: #c29a5c;
-}
-.bu2:hover{
-    background-color: rgba(194, 154, 92, .8);
-}
-.bu2:focus{
-    background-color: rgba(194, 154, 92, .8);
-}
-
-.titulo1{
-    width: 60%;
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-    #nome{
-        color: #333;
-    }
-    #linhas{
-    border-bottom: 1px solid #333;
-    }
-th{
-        background: #333;
-        color: white;
-        font-weight: bold;
-    }
-
-    input{
-
-    }
-    input:focus {
-    border: none !important;
-    border-bottom: 2px solid #c29a5c !important;
-    }
-
-    input:hover {
-    border: none !important;
-    border-bottom: 2px solid #c29a5c !important;
     }
 
 </style>
