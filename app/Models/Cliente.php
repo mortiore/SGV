@@ -24,7 +24,8 @@ class Cliente extends Authenticatable
         'email',
         'bairro',
         'rua',
-        'numCasa'
+        'numCasa',
+        'password'
     ];
 
     protected $hidden = [

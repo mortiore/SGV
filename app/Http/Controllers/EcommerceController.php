@@ -37,6 +37,12 @@ class EcommerceController extends Controller
     {
         $dados = $req->all();
 
+        if($dados['password'] != $dados['password1']){
+            echo"<script language='javascript' type='text/javascript'>
+            alert('A senha de confirmação está diferente, por favor, tente novamente.');window.location
+            .href='/cadastro';</script>";
+        }
+
         function createcliente(array $dados){
 
             $criar = Cliente::create([
@@ -54,8 +60,9 @@ class EcommerceController extends Controller
         }
 
         createcliente($dados);
-
-        return redirect()->route('ecommerce.login');
+        echo"<script language='javascript' type='text/javascript'>
+        alert('Você foi cadastrado com sucesso!');window.location
+        .href='/login';</script>";
     }
 
 }

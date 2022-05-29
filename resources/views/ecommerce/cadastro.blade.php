@@ -11,11 +11,9 @@
             {{ csrf_field() }}
             @include('forms.ecommerce._formcliente')
 
-                <div class="mb-3">
-                    <a class="btn btn-light btn-outline-danger" href="{{route('ecommerce.login')}}">Cancelar</a>
-                    <input type="button" value="Criar meu Cadastro" class="btn btn-danger"
-                    onclick="window.location.href='/confirmarcadastro.html'">
-                </div>
+            <div class="form-group" style="text-align: center;">
+        <input type="submit" value="Salvar" class="btn btn-color3">
+    </div>
             </form>
         </div>
     </main>

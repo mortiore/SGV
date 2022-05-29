@@ -6,7 +6,7 @@
                             <legend>Dados Pessoais</legend>
                             <div class="mb-3">
                                 <label for="txtNome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="txtNome">
+                                <input type="text" class="form-control" id="txtNome" name="nome" value="{{isset($registro->nome) ? $registro->nome : ''}}">
                             </div>
                             <div class="mb-3 col-md-6 col-xl-4">
                                 <label for="txtCPF" class="form-label">CPF</label>
@@ -22,11 +22,11 @@
                             <legend>Contatos</legend>
                             <div class="mb-3 col-md-8">
                                 <label for="txtEmail" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="txtEmail">
+                                <input type="email" class="form-control" id="txtEmail" name="email" value="{{isset($registro->email) ? $registro->email : ''}}">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="txtTelefone" class="form-label">Telefone</label>
-                                <input type="tel" class="form-control" id="txtTelefone">
+                                <input type="tel" class="form-control" id="txtTelefone" name="telefone" value="{{isset($registro->telefone) ? $registro->telefone : ''}}">
                                 <span class="form-text">(com DDD, somente números)</span>
                             </div>
                         </fieldset>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label for="txtNumero" class="form-label">Número</label>
-                                <input type="text" class="form-control" id="txtNumero">
+                                <input type="text" class="form-control" id="txtNumero" name="numCasa" value="{{isset($registro->numCasa) ? $registro->numCasa : ''}}">
                             </div>
                             <div class="mb-3 col-md-8">
                                 <label for="txtComplemento" class="form-label">Complemento</label>
@@ -59,11 +59,11 @@
                             <legend>Senha de Acesso</legend>
                             <div class="mb-3">
                                 <label for="txtSenha" class="form-label">Senha</label>
-                                <input type="password" class="form-control" id="txtSenha">
+                                <input type="password" class="form-control" id="txtSenha" name="password" value="{{isset($registro->password) ? $registro->password : ''}}">
                             </div>
                             <div class="mb-3">
                                 <label for="txtConfSenha" class="form-label">Confirmação de Senha</label>
-                                <input type="password" class="form-control" id="txtConfSenha">
+                                <input type="password" class="form-control" id="txtConfSenha" name="password1" value="{{isset($registro->password1) ? $registro->password1 : ''}}">
                             </div>
                         </fieldset>
                     </div>
