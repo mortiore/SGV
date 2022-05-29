@@ -18,8 +18,8 @@
 </div>
 
 @if(isset($registro->imagem))
-<div class="input-field">
-    <img width="150" src="{{asset($registro->imagem)}}">
+<div style="padding: 40px;" class="input-field center">
+    <img width="auto" height="300" src="{{asset($registro->imagem)}}">
 </div>
 @endif
 
@@ -29,10 +29,10 @@
 </div>
 
 <div class="form-check">
-  <input class="form-check-input" name="ativo" type="checkbox" id="ativo" value="{{ isset($registro->ativo) ? $registro->ativo : 'S' }}" checked>
-  <label class="form-check-label" for="flexCheckChecked">
-    Ativo
-  </label>
+  <label>
+        <input name="ativo" type="checkbox" id="ativo" value= "{{ isset($registro->ativo) ? $registro->ativo : 'S' }}" />
+        <span>Ativo</span>
+      </label>
 </div>
 
 

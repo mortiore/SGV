@@ -1,4 +1,4 @@
-@extends ('layout.site')
+@extends ('layout.siteinterno')
 
 @section('titulo','Produtos Cadastrados')
 
@@ -29,7 +29,7 @@
                 @foreach($registros as $registro)
                 <tr>
                     <td>{{ $registro->id }}</td>
-                    <td><img height="180" src="{{asset($registro->imagem)}}" alt="{{ $registro->titulo }}"></td>
+                    <td class="center"><img width="auto" height="180" src="{{asset($registro->imagem)}}" alt="{{ $registro->titulo }}"></td>
                     <td>{{ $registro->nome }}</td>
                     <td>{{ $registro->descricao }}</td>
                     <td>R$ {{ $registro->valor }}</td>

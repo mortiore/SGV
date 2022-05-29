@@ -18,8 +18,10 @@ Route::get('/entrar',['as'=>'entrar','uses'=>'App\Http\Controllers\LoginControll
 Route::get('/entrar/sair',['as'=>'sair','uses'=>'App\Http\Controllers\LoginController@sair']);
 
 //Site
-Route::get('/dash',['as'=>'site.dash','uses'=>'App\Http\Controllers\SiteController@dash']);
-Route::get('/login',['as'=>'site.login','uses'=>'App\Http\Controllers\SiteController@login']);
+Route::get('/dash',['as'=>'ecommerce.dash','uses'=>'App\Http\Controllers\EcommerceController@dash']);
+Route::get('/login',['as'=>'ecommerce.login','uses'=>'App\Http\Controllers\EcommerceController@login']);
+Route::get('/cadastro',['as'=>'ecommerce.cadastro','uses'=>'App\Http\Controllers\EcommerceController@cadastro']);
+Route::get('/updatecliente',['as'=>'ecommerce.updatecliente','uses'=>'App\Http\Controllers\EcommerceController@updatecliente']);
 
 //Cliente
 Route::get('/cliente/homecliente',['as'=>'admin.cliente.homecliente','uses'=>'App\Http\Controllers\ClienteController@home']);

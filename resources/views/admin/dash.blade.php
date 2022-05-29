@@ -1,4 +1,4 @@
-@extends ('layout.site')
+@extends ('layout.siteinterno')
 
 @section('titulo','Sistema Interno GV')
 
