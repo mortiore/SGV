@@ -8,7 +8,7 @@
     <h1 style="padding-top: 20px;padding-bottom: 30px; color: antiquewhite;" class="center">EDITANDO CLIENTE</h1>
     </div>
 <div class="container">
-<form action="{{route('admin.cliente.atualizacliente',$registro->idCliente)}}" method="post" enctype="multipart/form-data">
+<form action="{{route('admin.cliente.atualizacliente',$registro->id)}}" method="post" enctype="multipart/form-data">
 
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="put">

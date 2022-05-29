@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     public $timestamps = false;
-    protected $primaryKey = 'idCliente';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'idCliente',
+        'id',
         'nome',
         'telefone',
         'email',

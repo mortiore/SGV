@@ -27,7 +27,7 @@
                 <tbody>
                     @foreach($registros as $registro)
                     <tr>
-                        <td>{{ $registro->idCliente }}</td>
+                        <td>{{ $registro->id }}</td>
                         <td>{{ $registro->nome }}</td>
                         <td>{{ $registro->telefone }}</td>
                         <td>{{ $registro->email }}</td>
@@ -35,8 +35,8 @@
                         <td>{{ $registro->numCasa }}</td>
                         <td>{{ $registro->bairro }}</td>
                         <td>
-                            <a class="btn bu" href="{{ route('admin.cliente.editacliente',$registro->idCliente) }}">Editar</a>
-                            <a class="btn bu1" onclick="return confirm('Você realmente quer excluir {{ $registro->nome }} ?')" href="{{ route('admin.cliente.deletacliente',$registro->idCliente) }}">Deletar</a>
+                            <a class="btn bu" href="{{ route('admin.cliente.editacliente',$registro->id) }}">Editar</a>
+                            <a class="btn bu1" onclick="return confirm('Você realmente quer excluir {{ $registro->nome }} ?')" href="{{ route('admin.cliente.deletacliente',$registro->id) }}">Deletar</a>
                         </td>
                     </tr>
                     @endforeach
