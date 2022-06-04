@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\SegurancaController;
 use Illuminate\Http\Request;
 use App\Models\User;
 use DateTime;
