@@ -53,7 +53,7 @@ use Illuminate\Support\Facades\Auth;
         </ul>
           <?php } else { ?>
         <ul style="color: black; text-decoration: none !important;" class="right">
-        <li><a class="btn" style="background-color: #c29a5c; color: antiquewhite; text-decoration: none !important;"href="{{route('entrar')}}">Entrar</a></li>
+        <li><a class="btn" style="background-color: #c29a5c; color: antiquewhite; text-decoration: none !important;"href="{{route('index')}}">Entrar</a></li>
         </ul>
            <?php } ?>
 

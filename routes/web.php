@@ -22,6 +22,9 @@ Route::get('/dash',['as'=>'ecommerce.dash','uses'=>'App\Http\Controllers\Ecommer
 Route::get('/login',['as'=>'ecommerce.login','uses'=>'App\Http\Controllers\EcommerceController@login']);
 Route::get('/cadastro',['as'=>'ecommerce.cadastro','uses'=>'App\Http\Controllers\EcommerceController@cadastro']);
 Route::post('/updatecliente',['as'=>'ecommerce.updatecliente','uses'=>'App\Http\Controllers\EcommerceController@updatecliente']);
+Route::get('/entrar/cliente',['as'=>'entrar.cliente','uses'=>'App\Http\Controllers\EcommerceController@entrar']);
+Route::get('/entrar/cliente/sair',['as'=>'sair.cliente','uses'=>'App\Http\Controllers\EcommerceController@sair']);
+Route::post('/site/validacao/{id}',['as'=>'ecommerce.validacao','uses'=>'App\Http\Controllers\EcommerceController@validacao']);
 
 //Cliente
 Route::get('/cliente/homecliente',['as'=>'admin.cliente.homecliente','uses'=>'App\Http\Controllers\ClienteController@home']);

@@ -69,41 +69,18 @@ class EcommerceController extends Controller
     {
 
         $dados = $req->all();
-        if (Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password']]))
-        {   date_default_timezone_set('America/Sao_Paulo');
-
-            $dataatual = new DateTime();
-            $data = $dataatual->format('Y-m-d H:i:s');
-
-            $id = Auth::cliente()->id;
+        $cliente = DB::table('clientes')
+            ->select()
+            ->where('email', '=', $dados['email'])
+            ->first();
+        if ($cliente)
+        {
+            $id = $cliente->id;
             $usuario = Cliente::find($id);
-
-
-            function conferevalidade(){
-
-                $cliente = Cliente::find(Auth::cliente()->id);
-                $cliente->password1 = $cliente->password;
-                $cliente->save();
-
-            }
-
-            if($data < $usuario->bloqueio){
-                echo"<script language='javascript' type='text/javascript'>
-                    alert('Sua conta esta bloqueada, tente mais tarde.');window.location
-                    .href='/';</script>";
-            }else{
-
-            if($data > $usuario->vencimento){
-
-            conferevalidade();
-
-            return redirect()->route('admin.mudasenha');
-
-            }else{
 
             if($usuario->verificado == 'N'){
 
-                function gerarcode(){
+                function gerarcode($id){
                     $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                     $max = strlen($caracteres) - 1;
                     $code = "";
@@ -112,51 +89,49 @@ class EcommerceController extends Controller
                         $code .= $caracteres[mt_rand(0, $max)];
                     }
 
-                    $cliente = Cliente::find(Auth::cliente()->id);
-                    $cliente->verificacao = $code;
+                    $cliente = Cliente::find($id);
+                    $cliente->codverificacao = $code;
                     $email = $cliente->email;
                     $cliente->save();
 
                     function enviaemail($code,$email){
+                    $from = "fabioao@unipam.edu.br";
                     $to = "$email";
                     $subject = "Código de Verificação SGV";
 
                     $message = "
                     <html>
-                    <head>
-                    <title>Este é o teste de autenticação de duplo fator da SGV</title>
-                    </head>
                     <body>
-                    <p>O seu código de verificação é: $code </p>
+                    <p>Este é o teste de autenticação de duplo fator da SGV\n</p>
+                    <p>O seu código de verificação é: $code \n</p>
                     </body>
                     </html>
                     ";
 
                     // It is mandatory to set the content-type when sending HTML email
-                    $headers = "MIME-Version: 1.0" . "\r\n";
+                    $headers = "From:".$from."\r\n";
+                    $headers .= "MIME-Version: 1.0" . "\r\n";
                     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
                     // More headers. From is required, rest other headers are optional
-                    $headers .= "From: fabioao@unipam.edu.br";
 
                     mail($to,$subject,$message,$headers);
-                    }
 
+                    }
                     enviaemail($code,$email);
                 }
 
-                gerarcode();
+                gerarcode($id);
 
-                return redirect()->route('ecommerce.validacao');
+                $registro = Cliente::find($id);
+                return view('ecommerce.validacao',compact('registro'));
 
 
             }else{
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('ecommerce.dash');
             }
 
-            }}
-
-        }else{
+            }else{
 
             $cliente = DB::table('clientes')
             ->select()
@@ -192,6 +167,29 @@ class EcommerceController extends Controller
                 .href='/';</script>";
             }
         }
+    }
+
+    public function validacao(Request $req, $id){
+
+        $dados = $req->all();
+
+        $cliente = Cliente::find($id);
+
+        if($cliente->codverificacao == $dados['verificacao']){
+
+            $cliente->verificado = 'S';
+            $cliente->save();
+
+            echo"<script language='javascript' type='text/javascript'>
+            alert('Conta verificada com sucesso!');window.location
+            .href='/login';</script>";
+
+        }else{
+            echo"<script language='javascript' type='text/javascript'>
+                    alert('Código de verificação incorreto.');window.location
+                    .href='/login';</script>";
+        }
+
     }
 
 }
