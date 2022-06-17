@@ -42,6 +42,9 @@
                 <div style="padding-top: 30px; padding-bottom: 20px;" class="center">
 
                 <button style="height: 60px; color: #c29a5c;" class="btn btn-secondary">Entrar <br><i class="material-icons">login</i></button>
+                <p class="mt-3">
+                        Ainda não é cadastrado? <a href="{{route('criaadm')}}">Clique aqui</a> para se cadastrar.
+                    </p>
 
                 </div>
 

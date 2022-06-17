@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Artisan;
 
 
 
@@ -24,6 +25,27 @@ class LoginController extends Controller
     public function dashboard()
     {
         return view('admin.dash');
+    }
+
+    public function criaadm()
+    {
+        function createcliente(){
+
+            $criar = User::create([
+                'name'=>'Fabio',
+                'email'=>'admin@admin.com',
+                'password'=>bcrypt("123456")
+            ]);
+
+            return $criar;
+
+        }
+
+        createcliente();
+        echo"<script language='javascript' type='text/javascript'>
+        alert('Você cadastrou o usuario ADM com sucesso!');window.location
+        .href='/';</script>";
+
     }
 
     public function entrar(Request $req)

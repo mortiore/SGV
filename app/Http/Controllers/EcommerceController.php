@@ -94,7 +94,7 @@ class EcommerceController extends Controller
                     $email = $cliente->email;
                     $cliente->save();
 
-                    function enviaemail($code,$email){
+                function enviaemail($code,$email){
                     $from = "fabioao@unipam.edu.br";
                     $to = "$email";
                     $subject = "Código de Verificação SGV";
@@ -157,14 +157,14 @@ class EcommerceController extends Controller
 
                     echo"<script language='javascript' type='text/javascript'>
                     alert('Sua conta esta bloqueada tente daqui 30 minutos.');window.location
-                    .href='/';</script>";
+                    .href='/login';</script>";
                 }else{
                     return $bloqueio; //+1 TENTATIVA
                 }
             }else{
             echo"<script language='javascript' type='text/javascript'>
                 alert('Este email não possui cadastro.');window.location
-                .href='/';</script>";
+                .href='/login';</script>";
             }
         }
     }
