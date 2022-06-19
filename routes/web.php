@@ -27,6 +27,20 @@ Route::get('/entrar/cliente',['as'=>'entrar.cliente','uses'=>'App\Http\Controlle
 Route::get('/entrar/cliente/sair',['as'=>'sair.cliente','uses'=>'App\Http\Controllers\EcommerceController@sair']);
 Route::post('/site/validacao/{id}',['as'=>'ecommerce.validacao','uses'=>'App\Http\Controllers\EcommerceController@validacao']);
 
+
+Route::get('/site/recuperasenha',['as'=>'ecommerce.recuperasenha','uses'=>'App\Http\Controllers\EcommerceController@recuperasenha']);
+
+Route::post('/site/validaemail',['as'=>'ecommerce.validaemail','uses'=>'App\Http\Controllers\EcommerceController@validaemail']);
+
+Route::post('/site/validasenha/{id}',['as'=>'ecommerce.validasenha','uses'=>'App\Http\Controllers\EcommerceController@validasenha']);
+
+Route::get('/politica/privacidade',['as'=>'ecommerce.privacidade','uses'=>'App\Http\Controllers\EcommerceController@privacidade']);
+Route::get('/politica/termosdeuso',['as'=>'ecommerce.termosdeuso','uses'=>'App\Http\Controllers\EcommerceController@termosdeuso']);
+Route::get('/politica/quemsomos',['as'=>'ecommerce.quemsomos','uses'=>'App\Http\Controllers\EcommerceController@quemsomos']);
+Route::get('/politica/trocasedevolucoes',['as'=>'ecommerce.trocasedevolucoes','uses'=>'App\Http\Controllers\EcommerceController@trocasedevolucoes']);
+
+Route::get('/contato',['as'=>'ecommerce.contato','uses'=>'App\Http\Controllers\EcommerceController@contato']);
+
 //Cliente
 Route::get('/cliente/homecliente',['as'=>'admin.cliente.homecliente','uses'=>'App\Http\Controllers\ClienteController@home']);
 Route::get('/cliente/cadastracliente',['as'=>'admin.cliente.cadastracliente','uses'=>'App\Http\Controllers\ClienteController@cadastracliente']);

@@ -192,4 +192,116 @@ class EcommerceController extends Controller
 
     }
 
+    public function recuperasenha()
+    {
+        return view('ecommerce.validaemail');
+    }
+
+    public function validaemail(Request $req)
+    {
+        $dados = $req->all();
+        $cliente = Cliente::where('email', $dados['email'])->first();
+
+        if($cliente != null){
+
+            function gerarcode($id){
+                $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                $max = strlen($caracteres) - 1;
+                $code = "";
+
+                for($i=0; $i < 10; $i++) {
+                    $code .= $caracteres[mt_rand(0, $max)];
+                }
+
+                $cliente = Cliente::find($id);
+                $cliente->codverificacao = $code;
+                $email = $cliente->email;
+                $cliente->save();
+
+            function enviaemail($code,$email){
+                $from = "fabioao@unipam.edu.br";
+                $to = "$email";
+                $subject = "Código de Verificação SGV";
+
+                $message = "
+                <html>
+                <body>
+                <p>Este é o teste de autenticação de duplo fator da SGV para a recuperação de sua senha.\n</p>
+                <p>O seu código de verificação é: $code \n</p>
+                </body>
+                </html>
+                ";
+
+                // It is mandatory to set the content-type when sending HTML email
+                $headers = "From:".$from."\r\n";
+                $headers .= "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                // More headers. From is required, rest other headers are optional
+
+                mail($to,$subject,$message,$headers);
+
+                }
+                enviaemail($code,$email);
+            }
+            gerarcode($cliente->id);
+            $registro = $cliente;
+            return view('ecommerce.recuperasenha',compact('registro'));
+        }else{
+            echo"<script language='javascript' type='text/javascript'>
+            alert('Cliente não possui email cadastrado.');window.location
+            .href='/login';</script>";
+        }
+    }
+
+    public function validasenha(Request $req, $id)
+    {
+        $dados = $req->all();
+        $cliente = Cliente::find($id);
+
+        if($dados['senha']!=$dados['senha1']){
+            echo"<script language='javascript' type='text/javascript'>
+            alert('As senhas estão diferentes. Digite Novamente.');window.location
+            .href='/site/recuperasenha';</script>";
+        }else{
+            if($cliente->codverificacao != $dados['codverificacao']){
+                echo"<script language='javascript' type='text/javascript'>
+                alert('O código de verificação digitado esta incorreto.');window.location
+                .href='/site/recuperasenha';</script>";
+            }else{
+                $cliente->password = encrypt($dados['senha']);
+                $cliente->save();
+                echo"<script language='javascript' type='text/javascript'>
+                alert('Senha alterada com sucesso.');window.location
+                .href='/login';</script>";
+            }
+        }
+        //return view('ecommerce.login');
+    }
+
+    public function privacidade()
+    {
+        return view('ecommerce.politicas.privacidade');
+    }
+
+    public function termosdeuso()
+    {
+        return view('ecommerce.politicas.termosdeuso');
+    }
+
+    public function quemsomos()
+    {
+        return view('ecommerce.politicas.quemsomos');
+    }
+
+    public function trocasedevolucoes()
+    {
+        return view('ecommerce.politicas.trocasedevolucoes');
+    }
+
+    public function contato()
+    {
+        return view('ecommerce.contato');
+    }
+
 }

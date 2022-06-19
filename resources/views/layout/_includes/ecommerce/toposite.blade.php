@@ -25,22 +25,26 @@ use Illuminate\Support\Facades\Auth;
 </head>
 
 <body style="min-width: 360px;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-selaria border-bottom shadow-sm mb-3">
-        <div class="container">
-            <a class="navbar-brand" href="/index.html"><strong>Selaria SGV</strong></a>
+    <nav style="background-color: black;" class="navbar navbar-expand-lg navbar-dark bg-selaria border-bottom shadow-sm mb-3">
+        <div style="
+            background-color: black;
+            text-align: center;
+            width: 100%;
+            z-index: 3;" class="container">
+            <a class="navbar-brand" href="{{ route('ecommerce.login') }}"><strong>Selaria SGV</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a href="/index.html" class="nav-link text-white">Início</a>
+                        <a href="{{ route('ecommerce.login') }}" class="nav-link text-white">Início</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link text-white">Dropdown?</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/src/contato.html" class="nav-link text-white">Contato</a>
+                        <a href="{{ route('ecommerce.contato')}}" class="nav-link text-white">Contato</a>
                     </li>
                 </ul>
                 <div class="align-self-end">

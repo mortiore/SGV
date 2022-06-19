@@ -34,16 +34,11 @@
                         Ainda não é cadastrado? <a href="{{route('ecommerce.cadastro')}}">Clique aqui</a> para se cadastrar.
                     </p>
                     <p class="mt-3">
-                        Esqueceu sua senha? <a href="/src/recuperarsenha.html">Clique aqui</a> para recuperá-la.
+                        Esqueceu sua senha? <a href="{{route('ecommerce.recuperasenha')}}">Clique aqui</a> para recuperá-la.
                     </p>
 
                 </form>
             </div>
         </div>
     </main>
-
-    <div style="height: 273px;" class="d-block d-md-none"></div>
-    <div style="height: 153px;" class="d-none d-md-block d-lg-none"></div>
-    <div style="height: 129px;" class="d-none d-lg-block"></div>
-
 @endsection
