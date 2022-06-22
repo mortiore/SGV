@@ -19,6 +19,7 @@
         "sass-loader": "^12.1.0"
     },
     "dependencies": {
+        "@mui/icons-material": "^5.8.4",
         "bootstrap": "^5.2.0-beta1",
         "i": "^0.3.7",
         "jquery": "^3.6.0"

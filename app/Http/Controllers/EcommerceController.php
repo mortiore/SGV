@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DateTime;
 use App\Models\Cliente;
+use App\Models\Produto;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -20,7 +22,8 @@ class EcommerceController extends Controller
 
     public function dash()
     {
-        return view('ecommerce.index');
+        $produtos = Produto::all();
+        return view('ecommerce.index', compact('produtos'));
     }
 
     public function login()
@@ -67,7 +70,6 @@ class EcommerceController extends Controller
 
     public function entrar(Request $req)
     {
-
         $dados = $req->all();
         $cliente = DB::table('clientes')
             ->select()
@@ -75,6 +77,7 @@ class EcommerceController extends Controller
             ->first();
         if ($cliente)
         {
+
             $id = $cliente->id;
             $usuario = Cliente::find($id);
 
@@ -128,6 +131,7 @@ class EcommerceController extends Controller
 
 
             }else{
+                Session::put('logado', 'sim');
                 return redirect()->route('ecommerce.dash');
             }
 
@@ -302,6 +306,41 @@ class EcommerceController extends Controller
     public function contato()
     {
         return view('ecommerce.contato');
+    }
+
+    public function visualizaproduto($id){
+        $produto = Produto::find($id);
+        return view('ecommerce.visualizaproduto', compact('produto'));
+    }
+
+    public function carrinho(){
+        $cart = Session::get('cart');
+        $registro=[];
+
+
+        for($i = 0;$i < count($cart); $i++){
+            $id = $cart[$i]['product_id'];
+            $registro[$i]= Produto::find($id);
+        }
+        return view('ecommerce.carrinho', compact('registro'));
+    }
+
+    public function adicionacarrinho(Request $request, $id){
+        $produto = Produto::find($id);
+
+        if($request->session()->exists('cart')){
+            $cart = Session::get('cart');
+            $cart[]=['product_id'=> $produto->id,'valor'=> $produto->valor];
+            session(['cart' => $cart]);
+        }else{
+            Session::put('cart', [
+                ['product_id'=> $produto->id,'valor'=> $produto->valor]
+            ]);
+        }
+
+        echo"<script language='javascript' type='text/javascript'>
+                alert('Produto adicionado ao carrinho.');window.location
+                .href='/dash';</script>";
     }
 
 }

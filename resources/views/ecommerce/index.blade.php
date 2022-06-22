@@ -3,16 +3,38 @@
 @section('titulo','Index e-commerce')
 
 @section('conteudo')
-
-<div style="background-color: #314153;">
-
-    <h1 style="padding-top: 20px; padding-bottom: 40px; color: #c29a5c;" class="center">Produtos</h1>
-    <div class="">
-        <div class="center" style="padding-bottom: 30px;">
-        <button class="btn btn-color3"><span><a style="color: black; text-decoration: none;">Página ainda em desenvolvimento.</a></span></button>
-        </div>
+<?php
+use Illuminate\Support\Facades\Session;
+$req = Session::all();
+?>
+<main>
+    <div class="container" style="padding-top: 5px;"><p>
+        <?php
+        print_r($req['cart']);
+        ?></p>
     </div>
-    <div style="padding-bottom: 60px;"></div>
-</div>
+        <div class="container">
+            <div class="row">
+
+            @foreach($produtos as $produto)
+            <div class="col-sm-3">
+            <div class="card border-light">
+            <img src="{{asset($produto->imagem)}}" alt="{{$produto->titulo}}">
+            <div class="card-footer border-top border-light p-4">
+                <a href="#" class="h5">{{ $produto->nome }}</a>
+                <p>{{ $produto->descricao }}</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="h6 mb-0 text-gray">R$ {{ $produto->valor }}</span>
+                    <a class="btn btn-green" href="{{ route('ecommerce.visualizaproduto',$produto->id) }}">Conferir</a>
+                </div>
+            </div>
+        </div>
+        </div>
+                @endforeach
+
+            </div>
+        </div>
+        <div style="padding-bottom: 140px;"></div>
+</main>
 
 @endsection

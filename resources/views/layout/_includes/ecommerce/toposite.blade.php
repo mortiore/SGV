@@ -1,8 +1,6 @@
 <?php
-
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Session;
+$req = Session::all();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,37 +29,53 @@ use Illuminate\Support\Facades\Auth;
             text-align: center;
             width: 100%;
             z-index: 3;" class="container">
-            <a class="navbar-brand" href="{{ route('ecommerce.login') }}"><strong>Selaria SGV</strong></a>
+
+            <?php if($req['logado'] = 'sim'){ ?>
+                <a class="navbar-brand" href="{{ route('ecommerce.dash') }}"><strong>Selaria SGV</strong></a>
+            <?php } else { ?>
+                <a class="navbar-brand" href="{{ route('ecommerce.login') }}"><strong>Selaria SGV</strong></a>
+            <?php }?>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a href="{{ route('ecommerce.login') }}" class="nav-link text-white">Início</a>
+                    <?php if($req['logado'] = 'sim'){ ?>
+                        <a href="{{ route('ecommerce.dash') }}" class="nav-link text-white">Início</a>
+                    <?php } else { ?>
+                         <a href="{{ route('ecommerce.login') }}" class="nav-link text-white">Início</a>
+                    <?php }?>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Dropdown?</a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('ecommerce.contato')}}" class="nav-link text-white">Contato</a>
                     </li>
                 </ul>
                 <div class="align-self-end">
                     <ul class="navbar-nav">
+                    <?php if($req['logado'] = 'sim'){ ?>
+                        <?php } else { ?>
                         <li class="nav-item">
                             <a href="{{route('ecommerce.cadastro')}}" class="nav-link text-white">Cadastrar-me</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('ecommerce.login')}}" class="nav-link text-white">Entrar</a>
                         </li>
+                        <?php }?>
+
+                        <?php if($req['cart'] != null){ ?>
                         <li class="nav-item">
-                            <a href="carrinho.html" class="nav-link text-white">
-                                <svg class="bi" width="24" height="24" fill="currentColor">
-                                    <use xlink:href="/bi.svg#cart3" />
-                                </svg>
-                            </a>
+                        <a href="{{ route('ecommerce.carrinho')}}" class="nav-link text-white">Carrinho(<?php
+                        print_r(count($req['cart']));
+                        ?>)</a>
                         </li>
+                        <?php } else { ?>
+                        <li class="nav-item">
+                        <a href="{{ route('ecommerce.carrinho')}}" class="nav-link text-white">Carrinho(0)</a>
+                        </li>
+                        <?php }?>
                     </ul>
                 </div>
             </div>

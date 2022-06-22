@@ -29,10 +29,15 @@ Route::post('/site/validacao/{id}',['as'=>'ecommerce.validacao','uses'=>'App\Htt
 
 
 Route::get('/site/recuperasenha',['as'=>'ecommerce.recuperasenha','uses'=>'App\Http\Controllers\EcommerceController@recuperasenha']);
-
 Route::post('/site/validaemail',['as'=>'ecommerce.validaemail','uses'=>'App\Http\Controllers\EcommerceController@validaemail']);
-
 Route::post('/site/validasenha/{id}',['as'=>'ecommerce.validasenha','uses'=>'App\Http\Controllers\EcommerceController@validasenha']);
+
+Route::get('/site/visualizaproduto/{id}',['as'=>'ecommerce.visualizaproduto','uses'=>'App\Http\Controllers\EcommerceController@visualizaproduto']);
+
+Route::get('/site/carrinho',['as'=>'ecommerce.carrinho','uses'=>'App\Http\Controllers\EcommerceController@carrinho']);
+
+Route::get('/site/adicionacarrinho/{id}',['as'=>'ecommerce.adicionacarrinho','uses'=>'App\Http\Controllers\EcommerceController@adicionacarrinho']);
+
 
 Route::get('/politica/privacidade',['as'=>'ecommerce.privacidade','uses'=>'App\Http\Controllers\EcommerceController@privacidade']);
 Route::get('/politica/termosdeuso',['as'=>'ecommerce.termosdeuso','uses'=>'App\Http\Controllers\EcommerceController@termosdeuso']);
