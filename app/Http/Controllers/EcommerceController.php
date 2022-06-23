@@ -308,6 +308,13 @@ class EcommerceController extends Controller
         return view('ecommerce.contato');
     }
 
+    public function contatoenviar(){
+
+        echo"<script language='javascript' type='text/javascript'>
+                alert('Sua mensagem foi recebida! Em até 2 dias úteis ela será respondida.');window.location
+                .href='/dash';</script>";
+    }
+
     public function visualizaproduto($id){
         $produto = Produto::find($id);
         return view('ecommerce.visualizaproduto', compact('produto'));

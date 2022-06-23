@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Session;
 $req = Session::all();
 ?>
 <main>
-    <div class="container" style="padding-top: 5px;"><p>
-        <?php
-        print_r($req['cart']);
-        ?></p>
-    </div>
         <div class="container">
             <div class="row">
 

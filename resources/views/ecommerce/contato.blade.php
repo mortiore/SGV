@@ -24,8 +24,9 @@
                         style="height: 200px;"></textarea>
                         <label for="txtMensagem">Mensagem</label>
                     </div>
-                    <button class="btn btn-lg btn-selaria" type="button"
-                    onclick="window.location.href='/src/confirmcontato.html'">Enviar Mensagem</button>
+                    <p>
+                    <a class="btn btn-green" href="{{ route('ecommerce.contatoenviar') }}">Enviar Mensagem</a>
+                    </p>
 
                     <p class="mt-3">
                         Faremos nosso melhor para responder sua mensagem em até 2 dias úteis.

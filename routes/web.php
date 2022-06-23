@@ -45,6 +45,7 @@ Route::get('/politica/quemsomos',['as'=>'ecommerce.quemsomos','uses'=>'App\Http\
 Route::get('/politica/trocasedevolucoes',['as'=>'ecommerce.trocasedevolucoes','uses'=>'App\Http\Controllers\EcommerceController@trocasedevolucoes']);
 
 Route::get('/contato',['as'=>'ecommerce.contato','uses'=>'App\Http\Controllers\EcommerceController@contato']);
+Route::get('/contato/enviar',['as'=>'ecommerce.contatoenviar','uses'=>'App\Http\Controllers\EcommerceController@contatoenviar']);
 
 //Cliente
 Route::get('/cliente/homecliente',['as'=>'admin.cliente.homecliente','uses'=>'App\Http\Controllers\ClienteController@home']);

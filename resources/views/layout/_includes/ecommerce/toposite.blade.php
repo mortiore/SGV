@@ -1,6 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Session;
 $req = Session::all();
+if(isset($req['cart'])){
+
+}else{
+    $req['cart'] = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -65,13 +70,14 @@ $req = Session::all();
                         </li>
                         <?php }?>
 
-                        <?php if($req['cart'] != null){ ?>
+                        <?php if($req['cart']) { ?>
                         <li class="nav-item">
                         <a href="{{ route('ecommerce.carrinho')}}" class="nav-link text-white">Carrinho(<?php
                         print_r(count($req['cart']));
                         ?>)</a>
                         </li>
                         <?php } else { ?>
+
                         <li class="nav-item">
                         <a href="{{ route('ecommerce.carrinho')}}" class="nav-link text-white">Carrinho(0)</a>
                         </li>
