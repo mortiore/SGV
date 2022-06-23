@@ -312,7 +312,7 @@ class EcommerceController extends Controller
 
         echo"<script language='javascript' type='text/javascript'>
                 alert('Sua mensagem foi recebida! Em até 2 dias úteis ela será respondida.');window.location
-                .href='/dash';</script>";
+                .href='/';</script>";
     }
 
     public function visualizaproduto($id){
@@ -347,7 +347,7 @@ class EcommerceController extends Controller
 
         echo"<script language='javascript' type='text/javascript'>
                 alert('Produto adicionado ao carrinho.');window.location
-                .href='/dash';</script>";
+                .href='/';</script>";
     }
 
 }

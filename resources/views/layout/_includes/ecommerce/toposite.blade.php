@@ -57,6 +57,9 @@ if(isset($req['cart'])){
                     <li class="nav-item">
                         <a href="{{ route('ecommerce.contato')}}" class="nav-link text-white">Contato</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('index')}}" class="nav-link text-white">Sistema Interno</a>
+                    </li>
                 </ul>
                 <div class="align-self-end">
                     <ul class="navbar-nav">

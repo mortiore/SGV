@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',['as'=>'index','uses'=>'App\Http\Controllers\LoginController@home']);
+Route::get('/interno',['as'=>'index','uses'=>'App\Http\Controllers\LoginController@home']);
 Route::get('/entrar',['as'=>'entrar','uses'=>'App\Http\Controllers\LoginController@entrar']);
 Route::get('/entrar/sair',['as'=>'sair','uses'=>'App\Http\Controllers\LoginController@sair']);
 Route::get('/criaadm',['as'=>'criaadm','uses'=>'App\Http\Controllers\LoginController@criaadm']);
 
 //Site
-Route::get('/dash',['as'=>'ecommerce.dash','uses'=>'App\Http\Controllers\EcommerceController@dash']);
+Route::get('/',['as'=>'ecommerce.dash','uses'=>'App\Http\Controllers\EcommerceController@dash']);
 Route::get('/login',['as'=>'ecommerce.login','uses'=>'App\Http\Controllers\EcommerceController@login']);
 Route::get('/cadastro',['as'=>'ecommerce.cadastro','uses'=>'App\Http\Controllers\EcommerceController@cadastro']);
 Route::post('/updatecliente',['as'=>'ecommerce.updatecliente','uses'=>'App\Http\Controllers\EcommerceController@updatecliente']);
