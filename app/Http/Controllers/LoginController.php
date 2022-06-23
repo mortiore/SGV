@@ -44,7 +44,7 @@ class LoginController extends Controller
         createcliente();
         echo"<script language='javascript' type='text/javascript'>
         alert('Você cadastrou o usuario ADM com sucesso!');window.location
-        .href='/';</script>";
+        .href='/interno';</script>";
 
     }
 
@@ -73,7 +73,7 @@ class LoginController extends Controller
             if($data < $usuario->bloqueio){
                 echo"<script language='javascript' type='text/javascript'>
                     alert('Sua conta esta bloqueada, tente mais tarde.');window.location
-                    .href='/';</script>";
+                    .href='/interno';</script>";
             }else{
 
             if($data > $usuario->vencimento){
@@ -114,14 +114,14 @@ class LoginController extends Controller
 
                     echo"<script language='javascript' type='text/javascript'>
                     alert('Sua conta esta bloqueada tente daqui 30 minutos.');window.location
-                    .href='/';</script>";
+                    .href='/interno';</script>";
                 }else{
                     return $bloqueio; //+1 TENTATIVA
                 }
             }else{
             echo"<script language='javascript' type='text/javascript'>
                 alert('Este email não possui cadastro.');window.location
-                .href='/';</script>";
+                .href='/interno';</script>";
             }
         }
     }
@@ -149,13 +149,13 @@ class LoginController extends Controller
 
                 echo"<script language='javascript' type='text/javascript'>
                 alert('As senhas não conferem, tente novamente.');window.location
-                .href='/';</script>";
+                .href='/interno';</script>";
             }
 
             if($usuario->password1 == $dados['password']){ //CONFERE SE A SENHA COLOCADA JÁ TINHA SIDO USADO PELO USUARIO
                 echo"<script language='javascript' type='text/javascript'>
                     alert('Cadastre outra senha pois está já foi usada recentemente, tente novamente.');window.location
-                    .href='/';</script>";
+                    .href='/interno';</script>";
             }else{
 
             if($senha == $senhaConfirma){ //SE A SENHA BATER COM A CONFIRMAÇÃO DA SENHA, ELA É CRIPTOGRAFADA E COLOCADA EM BANCO
@@ -167,7 +167,7 @@ class LoginController extends Controller
             $usuario->save();
             echo"<script language='javascript' type='text/javascript'>
                     alert('Senha alterada com sucesso!');window.location
-                    .href='/';</script>";
+                    .href='/interno';</script>";
                 }
 
             }
