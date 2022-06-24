@@ -1,7 +1,7 @@
-<footer style="background-color: white;" class="border-top fixed-bottom text-muted bg-selaria">
+<footer style="background-color: black;" class="border-top fixed-bottom text-muted bg-selaria">
         <div class="container">
             <div class="row py-3">
-                <div class="col-12 col-md-4 text-center text-md-start">
+                <div style="color: white;" class="col-12 col-md-4 text-center text-md-start">
                     &copy; 2022 - Selaria SGV<br>
                     Rua Virtual Inexistente, 999, Patos de Minas/MG<br>
                     CNPJ 99.999.999/0001-99
@@ -13,7 +13,7 @@
                     <a href="{{ route('ecommerce.quemsomos') }}" class="text-decoration-none text-light">Quem Somos</a><br>
                     <a href="{{ route('ecommerce.trocasedevolucoes') }}" class="text-decoration-none text-light">Trocas e Devoluções</a>
                 </div>
-                <div class="col-12 col-md-4 text-center text-md-end">
+                <div style="color: white;" class="col-12 col-md-4 text-center text-md-end">
                     <a href="{{ route('ecommerce.contato') }}" class="text-decoration-none text-light">Administrativo</a><br>
                     E-mail: <a href="mailto:email@email.com"
                         class="text-decoration-none text-dark">email@email.com</a><br>

@@ -54,7 +54,7 @@ $req = Session::all();
                         <a href="{{ route('ecommerce.dash') }}" class="btn btn-outline-success btn-lg">
                             Continuar Comprando
                         </a>
-                        <a href="/src/fechamento_itens.html" class="btn btn-danger btn-lg">
+                        <a href="{{ route('ecommerce.fechamentoitens') }}" class="btn btn-danger btn-lg">
                             Fechar Compra
                         </a>
                     </div>

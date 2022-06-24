@@ -5,7 +5,7 @@
 @section('conteudo')
 
 <main>
-        <div class="container">
+        <div style="padding-bottom: 500px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.6);" class="container">
             <h1>Política de Trocas e Devoluções</h1>
             <hr>
             <p>

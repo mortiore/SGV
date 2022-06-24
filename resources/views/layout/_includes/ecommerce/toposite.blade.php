@@ -27,7 +27,10 @@ if(isset($req['cart'])){
 
 </head>
 
-<body style="min-width: 360px;">
+<body style="min-width: 360px; background-image:url('/img/cavalofundo.jpg');height: 1000px;
+  background-position: center;
+  background-size: cover;
+  position: relative;">
     <nav style="background-color: black;" class="navbar navbar-expand-lg navbar-dark bg-selaria border-bottom shadow-sm mb-3">
         <div style="
             background-color: black;

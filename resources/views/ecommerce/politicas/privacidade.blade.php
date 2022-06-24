@@ -5,7 +5,7 @@
 @section('conteudo')
 
 <main>
-        <div class="container">
+        <div style="padding-bottom: 500px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.6);" class="container">
             <h2>Política Privacidade</h2>
             <p>A sua privacidade é importante para nós. É política do Selaria SGV respeitar a sua privacidade em relação
                 a qualquer informação sua que possamos coletar no site <a href=http://www.sistemasgv.com.br>Selaria

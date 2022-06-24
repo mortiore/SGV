@@ -5,7 +5,7 @@
 @section('conteudo')
 
 <main>
-        <div class="container">
+        <div style="padding-bottom: 500px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.6);" class="container">
             <h2>1. Termos</h2>
             <p>Ao acessar ao site <a href='http://www.sistemasgv.com.br'>Selaria SGV</a>, concorda em cumprir estes
                 termos de serviço, todas as leis e regulamentos aplicáveis e concorda que é responsável pelo

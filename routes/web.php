@@ -35,6 +35,7 @@ Route::post('/site/validasenha/{id}',['as'=>'ecommerce.validasenha','uses'=>'App
 Route::get('/site/visualizaproduto/{id}',['as'=>'ecommerce.visualizaproduto','uses'=>'App\Http\Controllers\EcommerceController@visualizaproduto']);
 
 Route::get('/site/carrinho',['as'=>'ecommerce.carrinho','uses'=>'App\Http\Controllers\EcommerceController@carrinho']);
+Route::get('/site/fechamentoitens',['as'=>'ecommerce.fechamentoitens','uses'=>'App\Http\Controllers\EcommerceController@fechamentoitens']);
 
 Route::get('/site/adicionacarrinho/{id}',['as'=>'ecommerce.adicionacarrinho','uses'=>'App\Http\Controllers\EcommerceController@adicionacarrinho']);
 

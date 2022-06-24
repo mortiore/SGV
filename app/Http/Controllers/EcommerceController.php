@@ -350,4 +350,10 @@ class EcommerceController extends Controller
                 .href='/';</script>";
     }
 
+    public function fechamentoitens(){
+        echo"<script language='javascript' type='text/javascript'>
+                alert('Sistema de pagamento ainda em desenvolvimento. Obrigado por usar nosso site.');window.location
+                .href='/';</script>";
+    }
+
 }

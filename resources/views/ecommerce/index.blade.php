@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 $req = Session::all();
 ?>
 <main>
-        <div class="container">
+        <div style="padding-bottom: 500px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.3);" class="container">
             <div class="row">
 
             @foreach($produtos as $produto)
@@ -19,8 +19,10 @@ $req = Session::all();
                 <a href="#" class="h5">{{ $produto->nome }}</a>
                 <p>{{ $produto->descricao }}</p>
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                    <span class="h6 mb-0 text-gray">R$ {{ $produto->valor }}</span>
-                    <a class="btn btn-green" href="{{ route('ecommerce.visualizaproduto',$produto->id) }}">Conferir</a>
+                    <span class="h6 mb-0 text-gray"><?php
+                    $produto->valor = str_replace(".",",",$produto->valor);
+                    ?>R$ {{ $produto->valor }}</span>
+                    <a style="background-color: rgba(213, 127, 69, 0.8);" class="btn" href="{{ route('ecommerce.visualizaproduto',$produto->id) }}">Conferir</a>
                 </div>
             </div>
         </div>
