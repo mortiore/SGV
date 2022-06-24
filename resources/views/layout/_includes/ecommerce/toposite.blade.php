@@ -6,6 +6,11 @@ if(isset($req['cart'])){
 }else{
     $req['cart'] = "";
 }
+if(isset($req['logado'])){
+
+}else{
+    $req['logado'] = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,7 +43,7 @@ if(isset($req['cart'])){
             width: 100%;
             z-index: 3;" class="container">
 
-            <?php if($req['logado'] = 'sim'){ ?>
+            <?php if($req['logado'] == 'sim'){ ?>
                 <a class="navbar-brand" href="{{ route('ecommerce.dash') }}"><strong>Selaria SGV</strong></a>
             <?php } else { ?>
                 <a class="navbar-brand" href="{{ route('ecommerce.login') }}"><strong>Selaria SGV</strong></a>
@@ -50,7 +55,7 @@ if(isset($req['cart'])){
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                    <?php if($req['logado'] = 'sim'){ ?>
+                    <?php if($req['logado'] == 'sim'){ ?>
                         <a href="{{ route('ecommerce.dash') }}" class="nav-link text-white">Início</a>
                     <?php } else { ?>
                          <a href="{{ route('ecommerce.login') }}" class="nav-link text-white">Início</a>
@@ -66,7 +71,7 @@ if(isset($req['cart'])){
                 </ul>
                 <div class="align-self-end">
                     <ul class="navbar-nav">
-                        <?php if($req['logado'] = 'sim'){ ?>
+                        <?php if($req['logado'] == 'sim'){ ?>
                         <li class="nav-item">
                             <a class="nav-link text-white">Você está logado.</a>
                         </li>
@@ -90,9 +95,9 @@ if(isset($req['cart'])){
                         <a href="{{ route('ecommerce.carrinho')}}" class="nav-link text-white">Carrinho(0)</a>
                         </li>
                         <?php }?>
-                        <?php if($req['logado'] = 'sim'){ ?>
+                        <?php if($req['logado'] == 'sim'){ ?>
                         <li class="nav-item">
-                            <a class="nav-link text-white">Sair</a>
+                            <a href="{{ route('ecommerce.sair')}}" class="nav-link text-white">Sair</a>
                         </li>
                         <?php } else { ?>
                         <?php }?>

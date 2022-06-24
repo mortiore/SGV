@@ -68,6 +68,11 @@ class EcommerceController extends Controller
         .href='/login';</script>";
     }
 
+    public function sair(Request $req){
+        $req->session()->forget('logado');
+        return redirect()->route('ecommerce.dash');
+    }
+
     public function entrar(Request $req)
     {
         $dados = $req->all();
@@ -320,16 +325,16 @@ class EcommerceController extends Controller
         return view('ecommerce.visualizaproduto', compact('produto'));
     }
 
-    public function carrinho(){
+    public function carrinho(Request $req){
         $cart = Session::get('cart');
-        $registro=[];
-
-
-        for($i = 0;$i < count($cart); $i++){
-            $id = $cart[$i]['product_id'];
-            $registro[$i]= Produto::find($id);
-        }
+        $registro = $cart;
+        if($cart){
         return view('ecommerce.carrinho', compact('registro'));
+    }else{
+        echo"<script language='javascript' type='text/javascript'>
+                alert('Seu carrinho está vazio adicione algo nele primeiro.');window.location
+                .href='/';</script>";
+    }
     }
 
     public function adicionacarrinho(Request $request, $id){
@@ -337,11 +342,11 @@ class EcommerceController extends Controller
 
         if($request->session()->exists('cart')){
             $cart = Session::get('cart');
-            $cart[]=['product_id'=> $produto->id,'valor'=> $produto->valor];
+            $cart[]=['product_id'=> $produto->id,'valor'=> $produto->valor,'imagem'=> $produto->imagem, 'titulo' => $produto->titulo, 'nome' => $produto->nome, 'descricao' => $produto->descricao];
             session(['cart' => $cart]);
         }else{
             Session::put('cart', [
-                ['product_id'=> $produto->id,'valor'=> $produto->valor]
+                ['product_id'=> $produto->id,'valor'=> $produto->valor,'imagem'=> $produto->imagem, 'titulo' => $produto->titulo, 'nome' => $produto->nome, 'descricao' => $produto->descricao]
             ]);
         }
 
@@ -353,6 +358,13 @@ class EcommerceController extends Controller
     public function fechamentoitens(){
         echo"<script language='javascript' type='text/javascript'>
                 alert('Sistema de pagamento ainda em desenvolvimento. Obrigado por usar nosso site.');window.location
+                .href='/';</script>";
+    }
+
+    public function retiraitem(Request $req){
+        $req->session()->forget(["cart"]);
+        echo"<script language='javascript' type='text/javascript'>
+                alert('Carrinho limpo.');window.location
                 .href='/';</script>";
     }
 

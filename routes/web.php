@@ -21,6 +21,7 @@ Route::get('/criaadm',['as'=>'criaadm','uses'=>'App\Http\Controllers\LoginContro
 //Site
 Route::get('/',['as'=>'ecommerce.dash','uses'=>'App\Http\Controllers\EcommerceController@dash']);
 Route::get('/login',['as'=>'ecommerce.login','uses'=>'App\Http\Controllers\EcommerceController@login']);
+Route::get('/sair',['as'=>'ecommerce.sair','uses'=>'App\Http\Controllers\EcommerceController@sair']);
 Route::get('/cadastro',['as'=>'ecommerce.cadastro','uses'=>'App\Http\Controllers\EcommerceController@cadastro']);
 Route::post('/updatecliente',['as'=>'ecommerce.updatecliente','uses'=>'App\Http\Controllers\EcommerceController@updatecliente']);
 Route::get('/entrar/cliente',['as'=>'entrar.cliente','uses'=>'App\Http\Controllers\EcommerceController@entrar']);
@@ -36,6 +37,7 @@ Route::get('/site/visualizaproduto/{id}',['as'=>'ecommerce.visualizaproduto','us
 
 Route::get('/site/carrinho',['as'=>'ecommerce.carrinho','uses'=>'App\Http\Controllers\EcommerceController@carrinho']);
 Route::get('/site/fechamentoitens',['as'=>'ecommerce.fechamentoitens','uses'=>'App\Http\Controllers\EcommerceController@fechamentoitens']);
+Route::get('/site/retiraitem',['as'=>'ecommerce.retiraitem','uses'=>'App\Http\Controllers\EcommerceController@retiraitem']);
 
 Route::get('/site/adicionacarrinho/{id}',['as'=>'ecommerce.adicionacarrinho','uses'=>'App\Http\Controllers\EcommerceController@adicionacarrinho']);
 
