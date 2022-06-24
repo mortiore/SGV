@@ -5,7 +5,7 @@
 @section('conteudo')
 
 <main>
-            <div class="container">
+            <div style="padding-bottom: 500px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.95);" class="container">
             <form action="{{route('ecommerce.updatecliente')}}" method="post" enctype="multipart/form-data">
 
             {{ csrf_field() }}
