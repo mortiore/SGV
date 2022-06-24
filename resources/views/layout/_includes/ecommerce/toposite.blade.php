@@ -66,7 +66,7 @@ if(isset($req['cart'])){
                 </ul>
                 <div class="align-self-end">
                     <ul class="navbar-nav">
-                    <?php if($req['logado'] = 'sim'){ ?>
+                        <?php if($req['logado'] = 'sim'){ ?>
                         <li class="nav-item">
                             <a class="nav-link text-white">Você está logado.</a>
                         </li>
@@ -86,10 +86,15 @@ if(isset($req['cart'])){
                         ?>)</a>
                         </li>
                         <?php } else { ?>
-
                         <li class="nav-item">
                         <a href="{{ route('ecommerce.carrinho')}}" class="nav-link text-white">Carrinho(0)</a>
                         </li>
+                        <?php }?>
+                        <?php if($req['logado'] = 'sim'){ ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white">Sair</a>
+                        </li>
+                        <?php } else { ?>
                         <?php }?>
                     </ul>
                 </div>
