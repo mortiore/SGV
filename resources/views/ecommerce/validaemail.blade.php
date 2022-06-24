@@ -5,7 +5,7 @@
 @section('conteudo')
 
     <main>
-        <div class="container">
+        <div style="padding-bottom: 100px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.8);" class="container">
             <div class="row justify-content-center">
                 <form class="col-sm-10 col-md-8 col-lg-6" action="{{route('ecommerce.validaemail')}}" method="post" enctype="multipart/form-data">
 
