@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Session;
 $req = Session::all();
 ?>
 <main>
-        <div class="container">
-            <h1>Carrinho de Compras</h1>
+        <div style="padding-bottom: 500px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.8);" class="container">
+            <h1 style="padding-top: 30px;">Carrinho de Compras</h1>
             <hr>
             <ul class="list-group mb-3">
 
@@ -30,7 +30,9 @@ $req = Session::all();
 
                             <div class="text-end mt-2">
                                 <span class="text-dark">Valor: R$ {{ $registros->valor }}</span>
+                                <a href="{{ route('ecommerce.fechamentoitens') }}" style="background-color: rgba(213, 127, 69, 0.8);" class="btn"><i class="material-icons">close</i></a>
                             </div>
+
                         </div>
                     </div>
             </li>
@@ -54,7 +56,7 @@ $req = Session::all();
                         <a href="{{ route('ecommerce.dash') }}" class="btn btn-outline-success btn-lg">
                             Continuar Comprando
                         </a>
-                        <a href="{{ route('ecommerce.fechamentoitens') }}" class="btn btn-danger btn-lg">
+                        <a href="{{ route('ecommerce.fechamentoitens') }}" class="btn btn-green btn-lg">
                             Fechar Compra
                         </a>
                     </div>
