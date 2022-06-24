@@ -5,37 +5,40 @@
 @section('conteudo')
 
     <main>
-        <div class="container">
-            <div class="row justify-content-center">
+        <div style="padding-bottom: 500px; border-radius: 10px; background-color: rgba(240, 240, 240, 0.8);" class="container">
+            <div style="padding-top: 30px;" class="row justify-content-center">
                 <form action="{{route('entrar.cliente')}}" method="put" class="col-sm-10 col-md-8 col-lg-6">
-                <h1 class="mb-3">Faça login na sua conta</h1>
+                <center>
+                <h1 style="padding-top: 30px; padding-bottom: 50px;" class="mb-3">Faça login na sua conta</h1>
+                </center>
 
                 {{ csrf_field() }}
 
-                <div class="input-field">
-                    <label style="color: #c29a5c;">Login</label>
+                <div style="padding-top: 30px;" class="input-field">
+                    <label style="color: black;">Login</label>
                     <input type="text" name="email" required>
                 </div>
 
-                <div class="input-field">
-                    <label style="color: #c29a5c;">Senha</label>
+                <div style="padding-top: 30px;" class="input-field">
+                    <label style="color: black;">Senha</label>
                     <input type="password" name="password" required>
                 </div>
 
-                    <div class="form-check mb-3">
+                    <div style="padding-bottom: 50px;" class="form-check mb-3">
                     <label>
                     <input type="checkbox" />
                     <span>Lembrar-se</span>
                     </label>
                     </div>
-
-                    <button style="height: 60px; color: #c29a5c;" class="btn btn-secondary">Entrar <br><i class="material-icons">login</i></button>
-                    <p class="mt-3">
+                    <center>
+                    <button style="height: 60px; background-color: rgba(213, 127, 69, 0.8);" class="btn btn-secondary">Entrar <br><i class="material-icons">login</i></button>
+                    <p style="padding-top: 80px;" class="mt-3">
                         Ainda não é cadastrado? <a href="{{route('ecommerce.cadastro')}}">Clique aqui</a> para se cadastrar.
                     </p>
                     <p class="mt-3">
                         Esqueceu sua senha? <a href="{{route('ecommerce.recuperasenha')}}">Clique aqui</a> para recuperá-la.
                     </p>
+                    </center>
 
                 </form>
             </div>

@@ -67,6 +67,9 @@ if(isset($req['cart'])){
                 <div class="align-self-end">
                     <ul class="navbar-nav">
                     <?php if($req['logado'] = 'sim'){ ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white">Você está logado.</a>
+                        </li>
                         <?php } else { ?>
                         <li class="nav-item">
                             <a href="{{route('ecommerce.cadastro')}}" class="nav-link text-white">Cadastrar-me</a>

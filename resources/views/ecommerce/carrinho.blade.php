@@ -48,7 +48,7 @@ $req = Session::all();
                             $valorFinal += $valorAltInt;
                             $valorCarrinho = strval($valorFinal);
                         }
-                        $valorCarrinho = str_replace(".",",",$valorCarrinho);
+                        $valorCarrinho = number_format($valorCarrinho, 2, ',', ' ');
                         ?>
                         <h4 class="text-dark mb-3">Valor Total: R$ <?php print_r($valorCarrinho) ?></h4>
                         <a href="{{ route('ecommerce.dash') }}" class="btn btn-outline-success btn-lg">
