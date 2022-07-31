@@ -81,6 +81,9 @@ Route::get('/fornecedor/deletafornecedor/{id}',['as'=>'admin.fornecedor.deletafo
 Route::get('/entrar/mudasenha/',['as'=>'admin.mudasenha','uses'=>'App\Http\Controllers\LoginController@mudasenha']);
 Route::put('/entrar/atualizasenha/{id}',['as'=>'admin.atualizasenha','uses'=>'App\Http\Controllers\LoginController@atualizasenha']);
 
+//Pagamento
+Route::get('/checkout',['as'=>'controle.pagamento','uses'=>'App\Http\Controllers\PagSeguroController@autorizacao']);
+
 
 //Route::get('/login/deletaexercicio/{id}',['as'=>'admin.deletaexercicio','uses'=>'App\Http\Controllers\Site\LoginController@deletaexercicio']);
 

@@ -60,7 +60,7 @@ $req = Session::all();
                         <a href="{{ route('ecommerce.retiraitem') }}" style="background-color: rgba(13, 216, 230, 0.8);" class="btn">
                             Limpar Carrinho
                         </a>
-                        <a href="{{ route('ecommerce.fechamentoitens') }}" class="btn btn-green">
+                        <a href="{{ route('controle.pagamento') }}" class="btn btn-green">
                             Fechar Compra
                         </a>
                     </div>
