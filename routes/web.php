@@ -39,7 +39,7 @@ Route::get('/site/carrinho',['as'=>'ecommerce.carrinho','uses'=>'App\Http\Contro
 Route::get('/site/fechamentoitens',['as'=>'ecommerce.fechamentoitens','uses'=>'App\Http\Controllers\EcommerceController@fechamentoitens']);
 Route::get('/site/retiraitem',['as'=>'ecommerce.retiraitem','uses'=>'App\Http\Controllers\EcommerceController@retiraitem']);
 
-Route::get('/site/adicionacarrinho/{id}',['as'=>'ecommerce.adicionacarrinho','uses'=>'App\Http\Controllers\EcommerceController@adicionacarrinho']);
+Route::post('/site/adicionacarrinho/{id}',['as'=>'ecommerce.adicionacarrinho','uses'=>'App\Http\Controllers\EcommerceController@adicionacarrinho']);
 
 
 Route::get('/politica/privacidade',['as'=>'ecommerce.privacidade','uses'=>'App\Http\Controllers\EcommerceController@privacidade']);

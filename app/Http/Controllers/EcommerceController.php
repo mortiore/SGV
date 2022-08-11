@@ -70,6 +70,7 @@ class EcommerceController extends Controller
 
     public function sair(Request $req){
         $req->session()->forget('logado');
+        $req->session()->forget(["usuario"]);
         return redirect()->route('ecommerce.dash');
     }
 
@@ -136,6 +137,15 @@ class EcommerceController extends Controller
 
 
             }else{
+                if($req->session()->exists('usuario')){
+                    $usuario = Session::get('usuario');
+                    $usuario[]=['usuario_id'=> $usuario->id,'nome'=> $usuario->nome,'telefone'=> $usuario->telefone, 'email' => $usuario->email, 'bairro' => $usuario->bairro, 'rua' => $usuario->rua, 'numCasa' => $usuario->numCasa];
+                    session(['usuario' => $usuario]);
+                }else{
+                    Session::put('usuario', [
+                        ['usuario_id'=> $usuario->id,'nome'=> $usuario->nome,'telefone'=> $usuario->telefone, 'email' => $usuario->email, 'bairro' => $usuario->bairro, 'rua' => $usuario->rua, 'numCasa' => $usuario->numCasa]
+                    ]);
+                }
                 Session::put('logado', 'sim');
                 return redirect()->route('ecommerce.dash');
             }
@@ -322,12 +332,14 @@ class EcommerceController extends Controller
 
     public function visualizaproduto($id){
         $produto = Produto::find($id);
+        $produto["qtd"] = 1;
         return view('ecommerce.visualizaproduto', compact('produto'));
     }
 
     public function carrinho(Request $req){
         $cart = Session::get('cart');
         $registro = $cart;
+        //dd($registro);
         if($cart){
         return view('ecommerce.carrinho', compact('registro'));
     }else{
@@ -338,15 +350,17 @@ class EcommerceController extends Controller
     }
 
     public function adicionacarrinho(Request $request, $id){
+        $dados = $request->all();
+
         $produto = Produto::find($id);
 
         if($request->session()->exists('cart')){
             $cart = Session::get('cart');
-            $cart[]=['product_id'=> $produto->id,'valor'=> $produto->valor,'imagem'=> $produto->imagem, 'titulo' => $produto->titulo, 'nome' => $produto->nome, 'descricao' => $produto->descricao];
+            $cart[]=['product_id'=> $produto->id,'valor'=> $produto->valor,'imagem'=> $produto->imagem, 'titulo' => $produto->titulo, 'nome' => $produto->nome, 'descricao' => $produto->descricao, 'qtd' => $dados['qtd']];
             session(['cart' => $cart]);
         }else{
             Session::put('cart', [
-                ['product_id'=> $produto->id,'valor'=> $produto->valor,'imagem'=> $produto->imagem, 'titulo' => $produto->titulo, 'nome' => $produto->nome, 'descricao' => $produto->descricao]
+                ['product_id'=> $produto->id,'valor'=> $produto->valor,'imagem'=> $produto->imagem, 'titulo' => $produto->titulo, 'nome' => $produto->nome, 'descricao' => $produto->descricao, 'qtd' => $dados['qtd']]
             ]);
         }
 

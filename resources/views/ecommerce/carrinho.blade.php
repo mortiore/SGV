@@ -30,7 +30,11 @@ $req = Session::all();
                         col-xl-2 align-self-center mt-3">
 
                             <div class="text-end mt-2">
-                                <span class="text-dark">Valor: R$ {{ $registro[$i]['valor'] }}</span>
+                                <?php $valor = number_format($registro[$i]['valor'],2,',','.')?>
+                                <span class="text-dark">Valor: R$ {{ $valor }}</span>
+                            </div>
+                            <div class="text-end mt-2">
+                                <span class="text-dark">Quantidade: {{ $registro[$i]['qtd'] }}</span>
                             </div>
 
                         </div>
@@ -47,11 +51,11 @@ $req = Session::all();
                         $valorAltInt = 0;
                         $valorFinal = 0;
                         for($i = 0;$i < count($registro); $i++){
-                            $valorAltInt = floatval($registro[$i]['valor']);
+                            $valorAltInt = (floatval($registro[$i]['valor']) * $registro[$i]['qtd']);
                             $valorFinal += $valorAltInt;
                             $valorCarrinho = strval($valorFinal);
                         }
-                        $valorCarrinho = number_format($valorCarrinho, 2, ',', ' ');
+                        $valorCarrinho = number_format($valorCarrinho, 2, ',', '.');
                         ?>
                         <h4 class="text-dark mb-3">Valor Total: R$ <?php print_r($valorCarrinho) ?></h4>
                         <a href="{{ route('ecommerce.dash') }}" class="btn btn-success">

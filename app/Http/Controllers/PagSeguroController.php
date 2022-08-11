@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Cliente;
+use App\Models\Produto;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 require_once('../vendor/autoload.php');
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
@@ -19,10 +22,13 @@ use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 class PagSeguroController extends Controller
 {
 
-    public function autorizacao(){
-
+    public function autorizacao(Request $req){
+    $usuario = Session::get('usuario');
+    $cart = Session::get('cart');
     $client = new Client();
-
+    $userName = $usuario[0]["nome"];
+    $userEmail = $usuario[0]["email"];
+    if($req->session()->exists('usuario')){
     /*$resposta = $client->request('GET',
     'https://api.github.com/users/mortiore'
     );
@@ -36,7 +42,20 @@ class PagSeguroController extends Controller
     //TOKEN PRODUCAO = ef12909f-2a98-4a29-82f9-be1bd3b3cca1660d6c4349f48d27817eecb91da1e7118852-0924-4bdb-be36-e77bc2ab73f7
     //URL SANDBOX = https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?
     //URL PRODUCAO = https://ws.pagseguro.uol.com.br/v2/checkout?
-    $resposta = $client->request('POST', 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?email=fabio_araujo45@hotmail.com&token=11A5E76626D4403CB175419E3DBBDCD9&currency=BRL&itemId1=0001&itemDescription1=Notebook Prata&itemAmount1=243.00&itemQuantity1=1&itemWeight1=1000&itemId2=0002&itemDescription2=Notebook Rosa&itemAmount2=256.00&itemQuantity2=2&itemWeight2=750&reference=REF1234&senderName=Jose Comprador&senderAreaCode=11&senderPhone=56273440&senderEmail=comprador@uol.com.br&shippingType=1&shippingAddressStreet=Av.Brig.FariaLima&shippingAddressNumber=1384&shippingAddressComplement=5oandar&shippingAddressDistrict=JardimPaulistano&shippingAddressPostalCode=01452002&shippingAddressCity=SaoPaulo\shippingAddressState=SP&shippingAddressCountry=BRA', [
+    $url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?email=fabio_araujo45@hotmail.com&token=11A5E76626D4403CB175419E3DBBDCD9&currency=BRL';
+
+    for($i = 1;$i <= count($cart); $i++){
+        $url .= '&itemId'.$i.'='.$i;
+        $url .= '&itemDescription'.$i.'='.$cart[$i-1]['nome'];
+        $url .= '&itemAmount'.$i.'='.$cart[$i-1]['valor'];
+        $url .= '&itemQuantity'.$i.'='.$cart[$i-1]['qtd'];
+        $url .= '&itemWeight'.$i.'=1000';
+    }
+
+    /*print_r($url);
+    die();*/
+
+    $resposta = $client->request('POST', $url.'&reference=REF1234&senderName=""&senderAreaCode=""&senderPhone=""&senderEmail='.$userEmail.'&shippingType=1&shippingAddressStreet=""&shippingAddressNumber=""&shippingAddressComplement=""&shippingAddressDistrict=""&shippingAddressPostalCode=00000000&shippingAddressCity=""&shippingAddressState=""&shippingAddressCountry=BRA', [
         //'body' => '{"currency":"BRL","item: 1":"string","item: description":"string","item: amount":"string","item: quantity":"string"}',
         'headers' => [
             //'Accept' => 'application/xml',
@@ -66,6 +85,12 @@ class PagSeguroController extends Controller
     //dd($redirect);
 
     //return view('ecommerce.testepagseguro');
+    }else{
+    echo"<script language='javascript' type='text/javascript'>
+        alert('Faça o login para finalizar sua compra.');window.location
+        .href='/login';</script>";
+    }
+
     }
     public function redirect(){
         return view('ecommerce.escolheopcao');

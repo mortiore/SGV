@@ -25,8 +25,6 @@
     </footer>
     <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/javascript.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/zepto.min.js') }}"></script>
 </body>
 
 </html>
