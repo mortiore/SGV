@@ -23,12 +23,15 @@ class PagSeguroController extends Controller
 {
 
     public function autorizacao(Request $req){
-    $usuario = Session::get('usuario');
+
     $cart = Session::get('cart');
     $client = new Client();
+
+
+    if($req->session()->exists('usuario')){
+    $usuario = Session::get('usuario');
     $userName = $usuario[0]["nome"];
     $userEmail = $usuario[0]["email"];
-    if($req->session()->exists('usuario')){
     /*$resposta = $client->request('GET',
     'https://api.github.com/users/mortiore'
     );
@@ -55,7 +58,7 @@ class PagSeguroController extends Controller
     /*print_r($url);
     die();*/
 
-    $resposta = $client->request('POST', $url.'&reference=REF1234&senderName=""&senderAreaCode=""&senderPhone=""&senderEmail='.$userEmail.'&shippingType=1&shippingAddressStreet=""&shippingAddressNumber=""&shippingAddressComplement=""&shippingAddressDistrict=""&shippingAddressPostalCode=00000000&shippingAddressCity=""&shippingAddressState=""&shippingAddressCountry=BRA', [
+    $resposta = $client->request('POST', $url.'&reference=REF1234&senderName=""&senderAreaCode=""&senderPhone=""&senderEmail='.$userEmail.'&shippingType=1&shippingAddressStreet=""&shippingAddressNumber=""&shippingAddressComplement=""&shippingAddressDistrict=""&shippingAddressPostalCode=""&shippingAddressCity=""&shippingAddressState=""&shippingAddressCountry=BRA', [
         //'body' => '{"currency":"BRL","item: 1":"string","item: description":"string","item: amount":"string","item: quantity":"string"}',
         'headers' => [
             //'Accept' => 'application/xml',
